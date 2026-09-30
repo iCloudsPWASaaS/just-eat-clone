@@ -141,6 +141,21 @@ its rows:
 npm run smoke:admin
 ```
 
+### Address autocomplete
+
+Checkout and the saved-addresses form offer Google Places lookup on the first
+address line (`components/AddressAutocomplete.tsx`). Set the key:
+
+```sh
+NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=
+```
+
+In Google Cloud Console enable the **Places API** and **Maps JavaScript API** for
+the key's project (this requires billing), then restrict the key to your site's
+HTTP referrers (`http://localhost:3000/*`, your production domain, etc.).
+It is a browser key, so the `NEXT_PUBLIC_` prefix is expected and safe. Without
+a working key the field simply behaves as a normal text input.
+
 ## How ids work
 
 A menu id is either a database uuid (seeded) or the upstream `sourceId` string

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
+import PostcodeAutocomplete from "@/components/PostcodeAutocomplete";
 import { useBasket } from "@/components/BasketProvider";
 import { getCurrentUser, logout, type AuthUser } from "@/lib/auth";
 import { IconBag, IconChevronDown, IconPin, IconUser } from "@/components/Icons";
@@ -27,7 +28,9 @@ export default function SiteHeader() {
 
   useEffect(() => {
     if (!accountOpen && !locationOpen) return;
-    const close = () => {
+    const close = (e: MouseEvent) => {
+      // Ignore clicks inside the Google Places suggestion dropdown.
+      if ((e.target as Element | null)?.closest?.(".pac-container")) return;
       setAccountOpen(false);
       setLocationOpen(false);
     };
@@ -86,15 +89,12 @@ export default function SiteHeader() {
                 <label htmlFor="header-postcode" className="je-label">
                   Delivery postcode
                 </label>
-                <input
+                <PostcodeAutocomplete
                   id="header-postcode"
-                  className="je-input"
-                  placeholder="e.g. OX3 8RA"
                   value={postcodeDraft}
-                  onChange={(e) => setPostcodeDraft(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") savePostcode();
-                  }}
+                  onChange={setPostcodeDraft}
+                  onEnter={savePostcode}
+                  placeholder="e.g. OX3 8RA"
                 />
                 <p className="mt-2 text-xs text-grey-dark">
                   We deliver to Marston, Headington, Cutteslowe and the wider Oxford

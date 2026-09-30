@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { IconCheck, IconInfo } from "@/components/Icons";
+import PostcodeAutocomplete from "@/components/PostcodeAutocomplete";
 import type { DeliveryZone, OpeningHour, Restaurant } from "@/lib/types";
 
 /** Day-of-week index used throughout the app: 0 = Monday. */
@@ -63,13 +64,12 @@ export function DeliveryCheck({
   } | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const onCheck = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const pc = postcode.trim();
-    if (!pc) return;
+  const check = async (pc: string) => {
+    const trimmed = pc.trim();
+    if (!trimmed) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/delivery-check?postcode=${encodeURIComponent(pc)}`);
+      const res = await fetch(`/api/delivery-check?postcode=${encodeURIComponent(trimmed)}`);
       const data = await res.json();
       setResult({
         deliverable: data.deliverable,
@@ -81,6 +81,11 @@ export function DeliveryCheck({
     } finally {
       setLoading(false);
     }
+  };
+
+  const onCheck = (e: React.FormEvent) => {
+    e.preventDefault();
+    void check(postcode);
   };
 
   return (
@@ -95,13 +100,13 @@ export function DeliveryCheck({
           Your postcode
         </label>
         <div className="flex flex-col gap-2 sm:flex-row">
-          <input
+          <PostcodeAutocomplete
             id="delivery-postcode"
             className="je-input flex-1"
             placeholder="e.g. OX3 8RA"
             value={postcode}
-            onChange={(e) => setPostcode(e.target.value.toUpperCase())}
-            autoComplete="postal-code"
+            onChange={setPostcode}
+            onPick={(pc) => setPostcode(pc)}
           />
           <button type="submit" disabled={loading} className="je-btn-primary sm:w-36">
             {loading ? "Checking\u2026" : "Check"}

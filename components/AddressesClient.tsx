@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { IconTrash } from "@/components/Icons";
 import type { Address } from "@/lib/types";
+import AddressAutocomplete from "@/components/AddressAutocomplete";
 
 const EMPTY = {
   label: "Home",
@@ -137,7 +138,22 @@ export default function AddressesClient({ initial }: { initial: Address[] }) {
           </div>
 
           <div className="mt-4">
-            <TextField id="addressLine1" label="Address line 1" value={form.addressLine1} onChange={set("addressLine1")} error={errors.addressLine1} />
+            <AddressAutocomplete
+              id="addressLine1"
+              label="Address line 1"
+              value={form.addressLine1}
+              onChange={set("addressLine1")}
+              onPlace={(p) =>
+                setForm((f) => ({
+                  ...f,
+                  addressLine1: p.addressLine1,
+                  addressLine2: p.addressLine2,
+                  city: p.city || f.city,
+                  postcode: p.postcode,
+                }))
+              }
+              error={errors.addressLine1}
+            />
           </div>
           <div className="mt-4">
             <TextField id="addressLine2" label="Address line 2 (optional)" value={form.addressLine2} onChange={set("addressLine2")} />

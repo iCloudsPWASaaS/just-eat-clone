@@ -7,6 +7,7 @@ import { useBasket } from "@/components/BasketProvider";
 import { IconCheck, IconInfo } from "@/components/Icons";
 import { money } from "@/lib/money";
 import type { Address, Restaurant } from "@/lib/types";
+import AddressAutocomplete from "@/components/AddressAutocomplete";
 
 type AddressDraft = {
   id: string | null;
@@ -327,7 +328,22 @@ export default function CheckoutClient({ restaurant }: { restaurant: Restaurant 
               </div>
 
               <div className="mt-4">
-                <Field id="addressLine1" label="Address line 1" value={address.addressLine1} onChange={set("addressLine1")} error={errors.addressLine1} autoComplete="address-line1" />
+                <AddressAutocomplete
+                  id="addressLine1"
+                  label="Address line 1"
+                  value={address.addressLine1}
+                  onChange={set("addressLine1")}
+                  onPlace={(p) =>
+                    setAddress((a) => ({
+                      ...a,
+                      addressLine1: p.addressLine1,
+                      addressLine2: p.addressLine2,
+                      city: p.city || a.city,
+                      postcode: p.postcode,
+                    }))
+                  }
+                  error={errors.addressLine1}
+                />
               </div>
               <div className="mt-4">
                 <Field id="addressLine2" label="Address line 2 (optional)" value={address.addressLine2} onChange={set("addressLine2")} autoComplete="address-line2" />
