@@ -238,9 +238,9 @@ export function VariationPicker({
         role="dialog"
         aria-modal="true"
         aria-label={`Add ${item.name}`}
-        className="relative flex w-full max-w-md flex-col rounded-t-card bg-white shadow-raised sm:max-h-[90vh] sm:rounded-card"
+        className="relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-card bg-white shadow-raised sm:rounded-card"
       >
-        <div className="je-no-scrollbar overflow-y-auto p-5">
+        <div className="je-no-scrollbar min-h-0 flex-1 overflow-y-auto p-5">
           {/* Dish image first, then the name — Just Eat's item-card layout */}
           <div className="flex items-center gap-4">
             <DishImage item={item} className="h-20 w-20" />
