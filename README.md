@@ -125,6 +125,11 @@ update justeat.profiles set is_admin = true where email = 'you@example.com';
 notify pgrst, 'reload schema';
 ```
 
+The menu and category editors each show an image field that accepts either a
+paste-in URL or a file upload. Uploads go to the existing public
+`menu-images` Supabase Storage bucket via `/api/admin/upload` (admin-authenticated,
+5 MB ceiling, images only) and the returned public URL fills the field.
+
 Visitors who aren't signed in are sent to `/login?next=/admin`; signed-in
 non-admins are redirected home. Every `/api/admin/*` handler re-checks the row
 via `requireAdmin()` with the service-role client, so a forged cookie is not

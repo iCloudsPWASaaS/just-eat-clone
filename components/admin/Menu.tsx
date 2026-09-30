@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { adminFetch } from "@/components/admin/api";
 import { Card, ErrorNote, Field, PageTitle, Saving, Toggle } from "@/components/admin/ui";
+import ImageField from "@/components/admin/ImageField";
 import { money } from "@/lib/money";
 
 type Variation = {
@@ -473,14 +474,10 @@ function ItemRow({
                 className="je-input"
               />
             </Field>
-            <Field label="Image URL" className="sm:col-span-2">
-              <input
-                value={edit.imageUrl}
-                onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })}
-                placeholder="https://..."
-                className="je-input"
-              />
-            </Field>
+            <div className="sm:col-span-2">
+              <span className="je-label">Image</span>
+              <ImageField value={edit.imageUrl} onChange={(url) => setEdit({ ...edit, imageUrl: url })} />
+            </div>
             <Field label="Move to category">
               <select
                 defaultValue={item.categoryId}

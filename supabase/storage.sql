@@ -22,9 +22,10 @@ on conflict (id) do update
       allowed_mime_types = excluded.allowed_mime_types;
 
 -- Public read for anyone, including signed-out visitors. Writes are intentionally
--- not granted to anon/authenticated: images are only ever written by the
--- service role via scripts/upload-images.mjs, so nobody can upload through the
--- public API.
+-- not granted to anon/authenticated: images are written by the service role —
+-- via scripts/upload-images.mjs for the catalogue, and via /api/admin/upload
+-- (signed-in admin only) for the admin console's item/category editors — so
+-- nobody can upload through the public API.
 drop policy if exists "menu images are publicly readable" on storage.objects;
 create policy "menu images are publicly readable"
   on storage.objects

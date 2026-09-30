@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { adminFetch } from "@/components/admin/api";
 import { Card, ErrorNote, Field, PageTitle, Saving, Toggle } from "@/components/admin/ui";
+import ImageField from "@/components/admin/ImageField";
 
 type Category = {
   id: string;
@@ -171,7 +172,10 @@ function CategoryRow({
           </span>
         </div>
         <p className="mt-1 font-mono text-[11px] text-grey-midDark">/{category.slug}</p>
-        <input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="Image URL (optional)" className="je-input mt-2 !py-1.5 text-sm" />
+        <div className="mt-2">
+          <span className="je-label">Image</span>
+          <ImageField value={imageUrl} onChange={setImageUrl} />
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 sm:justify-end">
