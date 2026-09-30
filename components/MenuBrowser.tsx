@@ -1,9 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useBasket } from "@/components/BasketProvider";
 import { DishImage } from "@/components/DishImage";
-import { IconHeart, IconMinus, IconPlus, IconStarOutline } from "@/components/Icons";
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconHeart,
+  IconMinus,
+  IconPlus,
+  IconStarOutline,
+} from "@/components/Icons";
 import { money } from "@/lib/money";
 import type { MenuCategory, MenuItem } from "@/lib/types";
 
@@ -187,6 +194,32 @@ export function VariationPicker({
     [suggested, item.id]
   );
 
+  const carouselRef = useRef<HTMLUListElement>(null);
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanLeft(el.scrollLeft > 2);
+      setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollCarousel = (dir: 1 | -1) => {
+    const el = carouselRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.8), behavior: "smooth" });
+  };
+
   /** Price used when a suggestion is added (falls back to the default size). */
   const priceOf = (s: MenuItem) =>
     (s.variations.find((v) => v.isDefault) ?? s.variations[0])?.price ?? s.basePrice;
@@ -292,19 +325,48 @@ export function VariationPicker({
           {/* Have you seen — side dishes whose price lands in the total below */}
           {others.length > 0 && (
             <section className="mt-5 border-t border-grey-light pt-4">
-              <h4 className="text-lg font-extrabold text-grey-darkest">Have you seen&hellip;?</h4>
-              <p className="mt-0.5 text-sm text-grey-dark">
-                Favourites the regulars keep coming back for.
-              </p>
-              <ul className="mt-3 space-y-2">
+              <div className="flex items-end justify-between gap-3">
+                <div>
+                  <h4 className="text-lg font-extrabold text-grey-darkest">
+                    Have you seen&hellip;?
+                  </h4>
+                  <p className="mt-0.5 text-sm text-grey-dark">
+                    Favourites the regulars keep coming back for.
+                  </p>
+                </div>
+                <div className="flex gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => scrollCarousel(-1)}
+                    disabled={!canLeft}
+                    className="flex h-9 w-9 items-center justify-center rounded-button border border-grey-light text-grey-darkest hover:border-grey-midDark disabled:opacity-35"
+                    aria-label="Scroll left"
+                  >
+                    <IconChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollCarousel(1)}
+                    disabled={!canRight}
+                    className="flex h-9 w-9 items-center justify-center rounded-button border border-grey-light text-grey-darkest hover:border-grey-midDark disabled:opacity-35"
+                    aria-label="Scroll right"
+                  >
+                    <IconChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+              <ul
+                ref={carouselRef}
+                className="je-no-scrollbar -mx-5 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1"
+              >
                 {others.slice(0, 8).map((s) => {
                   const multi = s.variations.length > 1;
                   const n = countOf(s.id);
                   return (
-                    <li key={s.id}>
-                      <div className="flex items-center gap-3 rounded-button border border-grey-light px-3 py-2">
-                        <DishImage item={s} className="h-12 w-12" />
-                        <div className="min-w-0 flex-1">
+                    <li key={s.id} className="w-36 shrink-0 snap-start">
+                      <div className="flex flex-col items-center gap-2 rounded-button border border-grey-light p-2 text-center">
+                        <DishImage item={s} className="h-20 w-20" />
+                        <div className="w-full min-w-0">
                           <p className="truncate text-sm font-bold text-grey-darkest">{s.name}</p>
                           <p className="text-xs font-medium text-grey-midDark">
                             {multi ? `from ${money(priceOf(s))}` : money(priceOf(s))}
