@@ -2,6 +2,10 @@ node_modules
 .next
 out
 build
+*.tsbuildinfo
+
+# Chrome's "Webpage, Complete" asset folder alongside the saved menu page.
+data/raw/menu-je_files/
 
 .env
 .env.local

@@ -1,0 +1,120 @@
+{
+  "restaurants": [
+    {
+      "sourceId": "267105",
+      "slug": "woodfarm-kebab-and-pizza-marston",
+      "name": "Woodfarm Kebab & Pizza",
+      "description": "Woodfarm Kebab & Pizza serves classic pizza, kebabs, wraps and burgers from its Oxford location. A no-fuss takeaway kitchen focusing on reliable, generous pizza and freshly grilled shish and doner kebabs - the kind of place you turn to for a satisfying, no-surprises meal delivered straight to your door.",
+      "cuisines": ["Kebab", "Pizza", "Mediterranean", "Grill"],
+      "addressLine1": "21 Atkyns Road",
+      "addressLine2": null,
+      "city": "Oxford",
+      "postcode": "OX3 8RA",
+      "latitude": 51.748991,
+      "longitude": -1.200554,
+      "phone": "01865 642153",
+      "website": "https://woodfarmkebabpizza.uk",
+      "logoUrl": "https://d30v2pzvrfyzpo.cloudfront.net/uk/images/restaurants/267105.gif",
+      "rating": 3.75,
+      "ratingCount": 76,
+      "foodHygieneRating": 4,
+      "priceRange": "£",
+      "deliveryFee": 0,
+      "smallOrderThreshold": 0,
+      "minimumOrderValue": 13,
+      "serviceFeePercent": 0,
+      "deliveryEtaMinMinutes": 35,
+      "deliveryEtaMaxMinutes": 50,
+      "collectionEtaMinutes": 20,
+      "isDelivery": true,
+      "isCollection": true,
+      "isPreorder": false,
+      "isHalal": true,
+      "isVegetarianFriendly": true,
+      "isOpenNowForDelivery": true,
+      "isOpenNowForCollection": true,
+      "acceptsCashOnDelivery": true,
+      "contactlessDelivery": true,
+      "keywordSeoTitle": "Woodfarm Kebab & Pizza - Kebab and Pizza in Oxford OX3 8RA | Just Eat",
+      "keywordSeoDescription": "Order online for delivery or collection from Woodfarm Kebab & Pizza in Marston, Oxford. Pizza, kebabs, wraps, burgers, sides and desserts. Free delivery on orders over £13. 3.8 (76).",
+      "provenance": {
+        "discovery": "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/OX3%208RA",
+        "menu": "https://eateasy.co.uk/Oxfordshire-takeaways/Oxford-restaurants/Woodfarm-Kebab-Pizza-OX3-8RA-menu.php",
+        "fetchedAt": "2026-09-29T00:00:00.000Z"
+      }
+    }
+  ],
+  "openingHours": [
+    { "dayOfWeek": 0, "label": "Monday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 1, "label": "Tuesday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 2, "label": "Wednesday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 3, "label": "Thursday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 4, "label": "Friday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 5, "label": "Saturday", "openTime": "11:00", "closeTime": "23:00" },
+    { "dayOfWeek": 6, "label": "Sunday", "openTime": "11:00", "closeTime": "23:00" }
+  ],
+  "faqs": [
+    {
+      "question": "What type of food does Woodfarm Kebab & Pizza serve?",
+      "answer": "Woodfarm Kebab & Pizza serves Kebab, Pizza, Mediterranean and Grill food in Marston, Oxford. The menu covers pizzas in 10\" and 14\" sizes, doner and shish kebabs, wraps, burgers, sides, desserts and drinks.",
+      "sortOrder": 1
+    },
+    {
+      "question": "How long does delivery take?",
+      "answer": "Delivery typically takes 35-50 minutes to Marston and the surrounding Oxford area. Collection is usually ready in around 20 minutes.",
+      "sortOrder": 2
+    },
+    {
+      "question": "Is there a minimum order for delivery?",
+      "answer": "Yes. There is a minimum order value of £13 for delivery. Collection orders have no minimum.",
+      "sortOrder": 3
+    },
+    {
+      "question": "How much is delivery?",
+      "answer": "Delivery is free on this restaurant. A service fee may apply at checkout depending on the order.",
+      "sortOrder": 4
+    },
+    {
+      "question": "Does Woodfarm Kebab & Pizza offer a collection service?",
+      "answer": "Yes. You can order for collection from the restaurant at 21 Atkyns Road, Oxford, OX3 8RA. Collection usually takes around 20 minutes.",
+      "sortOrder": 5
+    },
+    {
+      "question": "What are the opening hours?",
+      "answer": "Woodfarm Kebab & Pizza is open every day from 11:00 to 23:00.",
+      "sortOrder": 6
+    },
+    {
+      "question": "Can I pay cash on delivery?",
+      "answer": "Yes, cash on delivery is supported. Contactless payment is also available.",
+      "sortOrder": 7
+    },
+    {
+      "question": "Is the food halal?",
+      "answer": "Yes. Woodfarm Kebab & Pizza is a halal restaurant, specialising in doner and shish kebabs alongside pizza.",
+      "sortOrder": 8
+    },
+    {
+      "question": "Does the menu have vegetarian options?",
+      "answer": "Yes. There are vegetarian options including the Veggie pizza, Veggie Burger, Veggie Wrap, Halloumi dishes and a Falafel and Houmous Wrap.",
+      "sortOrder": 9
+    },
+    {
+      "question": "How do I contact the restaurant?",
+      "answer": "You can call the restaurant on 01865 642153 or visit the website at woodfarmkebabpizza.uk.",
+      "sortOrder": 10
+    }
+  ],
+  "deliveryPostcodes": [
+    { "postcode": "OX3 8RA", "minutes": 0, "distanceKm": 0 },
+    { "postcode": "OX3 8QZ", "minutes": 5, "distanceKm": 0.4 },
+    { "postcode": "OX3 8LP", "minutes": 8, "distanceKm": 0.8 },
+    { "postcode": "OX3 0RP", "minutes": 10, "distanceKm": 1.1 },
+    { "postcode": "OX3 8LH", "minutes": 12, "distanceKm": 1.4 },
+    { "postcode": "OX2 9RJ", "minutes": 14, "distanceKm": 1.7 },
+    { "postcode": "OX1 5BQ", "minutes": 16, "distanceKm": 1.9 },
+    { "postcode": "OX3 0AA", "minutes": 18, "distanceKm": 2.1 },
+    { "postcode": "OX2 0PH", "minutes": 20, "distanceKm": 2.4 },
+    { "postcode": "OX4 3BJ", "minutes": 22, "distanceKm": 2.8 }
+  ]
+}

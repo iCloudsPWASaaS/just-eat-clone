@@ -1,0 +1,423 @@
+{
+  "generatedAt": "2026-09-30T00:42:56.669Z",
+  "items": {
+    "251448461": {
+      "path": "menu/pizza/margherita-251448461.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/margherita-251448461.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448465": {
+      "path": "menu/pizza/chicken-tikka-251448465.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/chicken-tikka-251448465.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448467": {
+      "path": "menu/pizza/peri-peri-chicken-251448467.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/peri-peri-chicken-251448467.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448469": {
+      "path": "menu/pizza/bbq-chicken-251448469.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/bbq-chicken-251448469.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448471": {
+      "path": "menu/pizza/mexican-251448471.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/mexican-251448471.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "exact"
+    },
+    "251448475": {
+      "path": "menu/pizza/chicken-shawarma-251448475.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/chicken-shawarma-251448475.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448477": {
+      "path": "menu/pizza/meat-feast-251448477.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/meat-feast-251448477.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448479": {
+      "path": "menu/pizza/meatballs-251448479.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/meatballs-251448479.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448487": {
+      "path": "menu/garlic-bread/garlic-bread-251448487.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/garlic-bread/garlic-bread-251448487.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448489": {
+      "path": "menu/kebabs/donner-kebab-251448489.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/donner-kebab-251448489.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448491": {
+      "path": "menu/kebabs/chicken-shawarma-251448491.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/chicken-shawarma-251448491.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448493": {
+      "path": "menu/kebabs/lamb-shish-kebab-251448493.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/lamb-shish-kebab-251448493.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448495": {
+      "path": "menu/kebabs/chicken-shish-kebab-251448495.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/chicken-shish-kebab-251448495.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448497": {
+      "path": "menu/kebabs/kofta-kebab-251448497.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/kofta-kebab-251448497.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448499": {
+      "path": "menu/kebabs/mixed-kebab-251448499.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/mixed-kebab-251448499.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448500": {
+      "path": "menu/kebabs/mixed-shish-kebab-251448500.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/mixed-shish-kebab-251448500.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448516": {
+      "path": "menu/wraps/chicken-strips-wrap-251448516.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-strips-wrap-251448516.jpg",
+      "kind": "restaurant-photo",
+      "matchedBy": "exact"
+    },
+    "251448517": {
+      "path": "menu/wraps/donner-wrap-251448517.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/donner-wrap-251448517.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448518": {
+      "path": "menu/wraps/chicken-shawarma-wrap-251448518.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-shawarma-wrap-251448518.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448519": {
+      "path": "menu/wraps/chicken-shish-wrap-251448519.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-shish-wrap-251448519.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448523": {
+      "path": "menu/wraps/halloumi-wrap-251448523.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/halloumi-wrap-251448523.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448534": {
+      "path": "menu/burgers/donner-burger-251448534.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/donner-burger-251448534.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448544": {
+      "path": "menu/sides/onion-rings-10pcs-251448544.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/onion-rings-10pcs-251448544.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448545": {
+      "path": "menu/sides/garlic-mushrooms-8pcs-251448545.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/garlic-mushrooms-8pcs-251448545.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448546": {
+      "path": "menu/sides/potato-wedges-251448546.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/potato-wedges-251448546.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448548": {
+      "path": "menu/sides/chicken-nuggets-8pcs-251448548.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/chicken-nuggets-8pcs-251448548.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448549": {
+      "path": "menu/sides/mozzarella-sticks-6pcs-251448549.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/mozzarella-sticks-6pcs-251448549.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448550": {
+      "path": "menu/sides/jalape-o-cream-cheese-251448550.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/jalape-o-cream-cheese-251448550.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448551": {
+      "path": "menu/sides/curry-sauce-251448551.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/curry-sauce-251448551.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448552": {
+      "path": "menu/sides/portion-of-rice-251448552.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/portion-of-rice-251448552.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448553": {
+      "path": "menu/chips/chips-251448553.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-251448553.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448555": {
+      "path": "menu/chips/chips-with-cheese-251448555.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-with-cheese-251448555.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448557": {
+      "path": "menu/chips/chips-with-cheese-and-beans-251448557.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-with-cheese-and-beans-251448557.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448560": {
+      "path": "menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448563": {
+      "path": "menu/fried-chicken-and-wings/chicken-strips-251448563.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/chicken-strips-251448563.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448565": {
+      "path": "menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448568": {
+      "path": "menu/spicy-chicken-wings/spicy-chicken-wings-251448568.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/spicy-chicken-wings-251448568.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448570": {
+      "path": "menu/chicken-strips/chicken-strips-251448570.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chicken-strips/chicken-strips-251448570.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448572": {
+      "path": "menu/dips/mayonnaise-251448572.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/mayonnaise-251448572.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448573": {
+      "path": "menu/dips/garlic-mayo-251448573.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/garlic-mayo-251448573.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448574": {
+      "path": "menu/dips/barbecue-sauce-251448574.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/barbecue-sauce-251448574.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448575": {
+      "path": "menu/dips/burger-sauce-251448575.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/burger-sauce-251448575.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448576": {
+      "path": "menu/dips/chilli-sauce-251448576.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/chilli-sauce-251448576.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448577": {
+      "path": "menu/dips/ketchup-251448577.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/ketchup-251448577.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "exact"
+    },
+    "251448579": {
+      "path": "menu/desserts/chocolate-fudge-cake-251448579.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/chocolate-fudge-cake-251448579.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "exact"
+    },
+    "251448581": {
+      "path": "menu/desserts/strawberry-cake-251448581.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/strawberry-cake-251448581.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "exact"
+    },
+    "251448582": {
+      "path": "menu/drinks/canned-drinks-330ml-251448582.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/canned-drinks-330ml-251448582.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "exact"
+    }
+  },
+  "categories": {
+    "pizza": {
+      "path": "categories/pizza.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/pizza.jpg",
+      "kind": "restaurant-photo"
+    },
+    "garlic-bread": {
+      "path": "categories/garlic-bread.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/garlic-bread.jpg",
+      "kind": "just-eat-generic"
+    },
+    "kebabs": {
+      "path": "categories/kebabs.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/kebabs.jpg",
+      "kind": "just-eat-generic"
+    },
+    "wraps": {
+      "path": "categories/wraps.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/wraps.jpg",
+      "kind": "restaurant-photo"
+    },
+    "burgers": {
+      "path": "categories/burgers.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/burgers.jpg",
+      "kind": "just-eat-generic"
+    },
+    "sides": {
+      "path": "categories/sides.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/sides.jpg",
+      "kind": "just-eat-generic"
+    },
+    "chips": {
+      "path": "categories/chips.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/chips.jpg",
+      "kind": "just-eat-generic"
+    },
+    "fried-chicken-and-wings": {
+      "path": "categories/fried-chicken-and-wings.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/fried-chicken-and-wings.jpg",
+      "kind": "just-eat-generic"
+    },
+    "spicy-chicken-wings": {
+      "path": "categories/spicy-chicken-wings.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/spicy-chicken-wings.jpg",
+      "kind": "restaurant-photo"
+    },
+    "chicken-strips": {
+      "path": "categories/chicken-strips.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/chicken-strips.jpg",
+      "kind": "just-eat-generic"
+    },
+    "dips": {
+      "path": "categories/dips.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/dips.jpg",
+      "kind": "just-eat-generic"
+    },
+    "desserts": {
+      "path": "categories/desserts.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/desserts.jpg",
+      "kind": "just-eat-experiment"
+    },
+    "drinks": {
+      "path": "categories/drinks.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/drinks.jpg",
+      "kind": "just-eat-experiment"
+    }
+  },
+  "restaurant": {
+    "logo": {
+      "path": "restaurant/logo.gif",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/restaurant/logo.gif"
+    }
+  },
+  "objects": {
+    "menu/pizza/margherita-251448461.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/margherita-251448461.jpg",
+    "menu/pizza/chicken-tikka-251448465.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/chicken-tikka-251448465.jpg",
+    "menu/pizza/peri-peri-chicken-251448467.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/peri-peri-chicken-251448467.jpg",
+    "menu/pizza/bbq-chicken-251448469.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/bbq-chicken-251448469.jpg",
+    "menu/pizza/mexican-251448471.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/mexican-251448471.jpg",
+    "menu/pizza/chicken-shawarma-251448475.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/chicken-shawarma-251448475.jpg",
+    "menu/pizza/meat-feast-251448477.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/meat-feast-251448477.jpg",
+    "menu/pizza/meatballs-251448479.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/meatballs-251448479.jpg",
+    "menu/garlic-bread/garlic-bread-251448487.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/garlic-bread/garlic-bread-251448487.jpg",
+    "menu/kebabs/donner-kebab-251448489.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/donner-kebab-251448489.jpg",
+    "menu/kebabs/chicken-shawarma-251448491.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/chicken-shawarma-251448491.jpg",
+    "menu/kebabs/lamb-shish-kebab-251448493.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/lamb-shish-kebab-251448493.jpg",
+    "menu/kebabs/chicken-shish-kebab-251448495.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/chicken-shish-kebab-251448495.jpg",
+    "menu/kebabs/kofta-kebab-251448497.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/kofta-kebab-251448497.jpg",
+    "menu/kebabs/mixed-kebab-251448499.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/mixed-kebab-251448499.jpg",
+    "menu/kebabs/mixed-shish-kebab-251448500.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/mixed-shish-kebab-251448500.jpg",
+    "menu/wraps/chicken-strips-wrap-251448516.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-strips-wrap-251448516.jpg",
+    "menu/wraps/donner-wrap-251448517.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/donner-wrap-251448517.jpg",
+    "menu/wraps/chicken-shawarma-wrap-251448518.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-shawarma-wrap-251448518.jpg",
+    "menu/wraps/chicken-shish-wrap-251448519.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-shish-wrap-251448519.jpg",
+    "menu/wraps/halloumi-wrap-251448523.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/halloumi-wrap-251448523.jpg",
+    "menu/burgers/donner-burger-251448534.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/donner-burger-251448534.jpg",
+    "menu/sides/onion-rings-10pcs-251448544.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/onion-rings-10pcs-251448544.jpg",
+    "menu/sides/garlic-mushrooms-8pcs-251448545.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/garlic-mushrooms-8pcs-251448545.jpg",
+    "menu/sides/potato-wedges-251448546.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/potato-wedges-251448546.jpg",
+    "menu/sides/chicken-nuggets-8pcs-251448548.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/chicken-nuggets-8pcs-251448548.jpg",
+    "menu/sides/mozzarella-sticks-6pcs-251448549.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/mozzarella-sticks-6pcs-251448549.jpg",
+    "menu/sides/jalape-o-cream-cheese-251448550.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/jalape-o-cream-cheese-251448550.jpg",
+    "menu/sides/curry-sauce-251448551.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/curry-sauce-251448551.jpg",
+    "menu/sides/portion-of-rice-251448552.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/portion-of-rice-251448552.jpg",
+    "menu/chips/chips-251448553.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-251448553.jpg",
+    "menu/chips/chips-with-cheese-251448555.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-with-cheese-251448555.jpg",
+    "menu/chips/chips-with-cheese-and-beans-251448557.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chips/chips-with-cheese-and-beans-251448557.jpg",
+    "menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg",
+    "menu/fried-chicken-and-wings/chicken-strips-251448563.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/chicken-strips-251448563.jpg",
+    "menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg",
+    "menu/spicy-chicken-wings/spicy-chicken-wings-251448568.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/spicy-chicken-wings-251448568.jpg",
+    "menu/chicken-strips/chicken-strips-251448570.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chicken-strips/chicken-strips-251448570.jpg",
+    "menu/dips/mayonnaise-251448572.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/mayonnaise-251448572.jpg",
+    "menu/dips/garlic-mayo-251448573.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/garlic-mayo-251448573.jpg",
+    "menu/dips/barbecue-sauce-251448574.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/barbecue-sauce-251448574.jpg",
+    "menu/dips/burger-sauce-251448575.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/burger-sauce-251448575.jpg",
+    "menu/dips/chilli-sauce-251448576.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/chilli-sauce-251448576.jpg",
+    "menu/dips/ketchup-251448577.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/dips/ketchup-251448577.jpg",
+    "menu/desserts/chocolate-fudge-cake-251448579.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/chocolate-fudge-cake-251448579.jpg",
+    "menu/desserts/strawberry-cake-251448581.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/strawberry-cake-251448581.jpg",
+    "menu/drinks/canned-drinks-330ml-251448582.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/canned-drinks-330ml-251448582.jpg",
+    "categories/pizza.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/pizza.jpg",
+    "categories/garlic-bread.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/garlic-bread.jpg",
+    "categories/kebabs.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/kebabs.jpg",
+    "categories/wraps.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/wraps.jpg",
+    "categories/burgers.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/burgers.jpg",
+    "categories/sides.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/sides.jpg",
+    "categories/chips.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/chips.jpg",
+    "categories/fried-chicken-and-wings.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/fried-chicken-and-wings.jpg",
+    "categories/spicy-chicken-wings.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/spicy-chicken-wings.jpg",
+    "categories/chicken-strips.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/chicken-strips.jpg",
+    "categories/dips.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/dips.jpg",
+    "categories/desserts.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/desserts.jpg",
+    "categories/drinks.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/drinks.jpg",
+    "restaurant/logo.gif": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/restaurant/logo.gif"
+  }
+}

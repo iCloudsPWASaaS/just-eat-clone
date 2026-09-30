@@ -1,0 +1,119 @@
+// =================================
+// Color palette
+// =================================
+// Main brand colors – these should never be called directly, but assigned to more descriptive variables
+
+$white                        : #fff;
+$black                        : #000;
+
+// Brand specific Orange
+// NOT AA accessibility compliant but available for background or visual highlights
+$brand--orange                : #ff8000;
+
+// Web Orange
+// NOT fully AA accessibility compliant but available for text 18px font-size or for incidental background colours
+$orange                       : #f36d00;
+$orange--dark                 : #df6400;
+$orange--darkest              : #a44900;
+
+// Fully accessible orange
+$orange--aa                   : #cd4900;
+$orange--aa--dark             : #bc4300;
+$orange--aa--darkest          : #8b3100;
+
+$orange--offWhite             : #ffead4; // for background highlight and warnings
+
+
+$blue--light                  : #4996fd; // used for outlines
+$blue                         : #125fca;
+$blue--dark                   : #0f4fa9; // for hover of base $blue
+$blue--darkest                : #0d4089; // for focus/active of base $blue
+$blue--offWhite               : #e7f1fe;
+$blue--offWhite--dark         : #dde7f4; // for hover of base $blue--offWhite
+$blue--offWhite--darkest      : #cad3df; // for focus/active of base $blue--offWhite
+
+$red                          : #d50525;
+$red--offWhite                : #ffe9ea;
+
+$green                        : #006631;
+$green--offWhite              : #e5faef;
+
+$yellow--offWhite             : #fff9df;
+
+// Greys – listed from lightest to darkest - these are the full range of greys we can use
+$grey--offWhite               : #f9fafb;
+$grey--lighter                : #f1f2f4;
+$grey--light                  : #e2e6e9;
+$grey--mid                    : #c5ccd3;
+$grey--midDark                : #929faa;
+$grey--dark                   : #5e6b77;
+$grey--darkest                : #2a3846;
+
+
+// BTA Brand Colours - only to be used in-line with BTA colours
+$purple                       : #3b1249;
+$purple--light                : #ead9f0;
+
+
+// =================================
+// Color Scheme
+// =================================
+// These are the variables that should be used directly in our SCSS (globally)
+
+$color-primary                : $orange;
+$color-secondary              : $blue;
+
+// Common colors
+$color-text                   : $grey--darkest;
+$color-text--hint             : $grey--mid;
+$color-text--success          : $green;
+$color-text--danger           : $red;
+$color-text--warning          : $orange--aa;
+$color-headings               : $grey--darkest;
+$color-headings--highlight    : $orange;  // only to be used at large font sizes (for AA)
+
+$color-bg                     : $grey--offWhite;
+$color-bg--darker             : $grey--lighter;
+$color-bg--component          : $white;
+$color-bg--accept             : $green--offWhite;
+$color-bg--notification       : $yellow--offWhite;
+$color-bg--info               : $blue--offWhite;
+$color-bg--error              : $red--offWhite;
+
+$color-border                 : $grey--mid;
+$color-border--interactive    : $grey--dark;
+$color-disabled               : $grey--light;
+$color-shadow                 : $grey--mid;
+
+$color-btas-primary           : $purple;
+$color-btas-bg                : $purple--light;
+
+// Links
+$color-link-default           : $blue;
+$color-link-hover             : $blue--dark;
+$color-link-active            : $blue--darkest;
+// $color-link-visited           : $color-link-default; // should we use this?
+
+// Focus outline colour
+$color-focus-outline          : $blue--light;
+
+// Text Selection – currently defined as browser default
+$color-selection              : inherit;
+$color-selection-bg           : inherit;
+
+// <hr> border color
+$hr-color                     : $grey--mid;
+
+
+// =================================
+// Wallpapers
+// ---
+// Wallpaper colours are used for the background colour for
+// when an elm has overlaying a icon wallpaper
+// =================================
+
+$wallpaper-blue               : $blue;
+$wallpaper-orange             : $brand--orange;
+
+// Icons
+$icon-base--primary           : $black;

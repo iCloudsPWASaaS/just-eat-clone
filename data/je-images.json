@@ -1,0 +1,414 @@
+{
+  "items": {
+    "251448461": {
+      "name": "Margherita",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/4957efde1e6a0ac7ab42d261d5527dfc",
+      "kind": "restaurant-photo"
+    },
+    "251448465": {
+      "name": "Chicken Tikka",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/2abe2dceee61a96f456064b07b9c0576",
+      "kind": "restaurant-photo"
+    },
+    "251448467": {
+      "name": "Peri Peri Chicken",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/2e865883df91efa34da0356550a75f12",
+      "kind": "restaurant-photo"
+    },
+    "251448469": {
+      "name": "BBQ Chicken",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/dcc4d4472be70347a0a96b000ea7ae20",
+      "kind": "restaurant-photo"
+    },
+    "251448471": {
+      "name": "Mexican",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Sauces_Dips_Salsa_processed_1",
+      "kind": "just-eat-experiment"
+    },
+    "251448475": {
+      "name": "Chicken Shawarma",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Shawarma_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448477": {
+      "name": "Meat Feast",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/a61fcd4d69885d09e52069e0458820c2",
+      "kind": "restaurant-photo"
+    },
+    "251448479": {
+      "name": "Meatballs",
+      "category": "Pizza",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/1dae1d3daadcc081ff27a059257f165a",
+      "kind": "restaurant-photo"
+    },
+    "251448487": {
+      "name": "Garlic Bread",
+      "category": "Garlic Bread",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Garlic_Bread_GREEK-0",
+      "kind": "just-eat-generic"
+    },
+    "251448489": {
+      "name": "Donner Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Donner_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448491": {
+      "name": "Chicken Shawarma",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Shawarma_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448493": {
+      "name": "Lamb Shish Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Lamb_Shish_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448495": {
+      "name": "Chicken Shish Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Shish_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448497": {
+      "name": "Kofta Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Kofta_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448499": {
+      "name": "Mixed Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Mixed_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448500": {
+      "name": "Mixed Shish Kebab",
+      "category": "Kebabs",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Mixed_Shish_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448516": {
+      "name": "Chicken Strips Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/260a2bcf8e611eca37886bc87d7434d5",
+      "kind": "restaurant-photo"
+    },
+    "251448517": {
+      "name": "Donner Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Donner_Wrap_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448518": {
+      "name": "Chicken Shawarma Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Shawarma_Wrap_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448519": {
+      "name": "Chicken Shish Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Shish_Wrap_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448522": {
+      "name": "Veggie Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Vegetarian_Wrap_VEGETARIAN/VEGAN-0",
+      "kind": "just-eat-generic"
+    },
+    "251448523": {
+      "name": "Halloumi Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Halloumi_Wrap_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448524": {
+      "name": "Falafel and Houmous Wrap",
+      "category": "Wraps",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Falafel_And_Houmous_Wrap_VEGETARIAN/VEGAN-0",
+      "kind": "just-eat-generic"
+    },
+    "251448534": {
+      "name": "Donner Burger",
+      "category": "Burgers",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Donner_Burger_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "251448544": {
+      "name": "Onion Rings 10pcs",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Onion_Rings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448545": {
+      "name": "Garlic Mushrooms 8pcs",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Garlic_Mushrooms_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448546": {
+      "name": "Potato Wedges",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Potato_Wedges_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448548": {
+      "name": "Chicken Nuggets 8pcs",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Nuggets_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448549": {
+      "name": "Mozzarella Sticks 6pcs",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Mozzarella_Sticks_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448550": {
+      "name": "Jalapeño Cream Cheese",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Jalapeno_Cream_Cheese_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448551": {
+      "name": "Curry Sauce",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Curry_Sauce_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448552": {
+      "name": "Portion of Rice",
+      "category": "Sides",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Portion_of_Rice_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448553": {
+      "name": "Chips",
+      "category": "Chips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chips_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448555": {
+      "name": "Chips with Cheese",
+      "category": "Chips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chips_With_Cheese_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448557": {
+      "name": "Chips with Cheese and Beans",
+      "category": "Chips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chips_with_Cheese_and_Beans_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448560": {
+      "name": "Spicy Chicken Wings",
+      "category": "Fried Chicken and Wings",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Spicy_Chicken_Wings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448563": {
+      "name": "Chicken Strips",
+      "category": "Fried Chicken and Wings",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Strips_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448565": {
+      "name": "Spicy Chicken Wings",
+      "category": "Spicy Chicken Wings",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Spicy_Chicken_Wings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448568": {
+      "name": "Spicy Chicken Wings",
+      "category": "Spicy Chicken Wings",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Spicy_Chicken_Wings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448570": {
+      "name": "Chicken Strips",
+      "category": "Chicken Strips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Strips_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448572": {
+      "name": "Mayonnaise",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Mayonnaise_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448573": {
+      "name": "Garlic Mayo",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Garlic_Mayo_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448574": {
+      "name": "Barbecue Sauce",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Barbecue_Sauce_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448575": {
+      "name": "Burger Sauce",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Burger_Sauce_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448576": {
+      "name": "Chilli Sauce",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chili_Sauce_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448577": {
+      "name": "Ketchup",
+      "category": "Dips",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Ketchup_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "251448579": {
+      "name": "Chocolate Fudge Cake",
+      "category": "Desserts",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Desserts_Cakes_Chocolate_Fudge_Cake_processed",
+      "kind": "just-eat-experiment"
+    },
+    "251448581": {
+      "name": "Strawberry Cake",
+      "category": "Desserts",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Desserts_Cakes_Strawberry_Fudge_Cake_processed",
+      "kind": "just-eat-experiment"
+    },
+    "251448582": {
+      "name": "Canned Drinks 330ml",
+      "category": "Drinks",
+      "matchedBy": "exact",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
+      "kind": "just-eat-experiment"
+    }
+  },
+  "categories": {
+    "pizza": {
+      "name": "Pizza",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/4957efde1e6a0ac7ab42d261d5527dfc",
+      "kind": "restaurant-photo"
+    },
+    "garlic-bread": {
+      "name": "Garlic Bread",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Garlic_Bread_GREEK-0",
+      "kind": "just-eat-generic"
+    },
+    "kebabs": {
+      "name": "Kebabs",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Donner_Kebab_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "wraps": {
+      "name": "Wraps",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/260a2bcf8e611eca37886bc87d7434d5",
+      "kind": "restaurant-photo"
+    },
+    "burgers": {
+      "name": "Burgers",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Donner_Burger_TURKISH-0",
+      "kind": "just-eat-generic"
+    },
+    "sides": {
+      "name": "Sides",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Onion_Rings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "chips": {
+      "name": "Chips",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chips_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "fried-chicken-and-wings": {
+      "name": "Fried Chicken and Wings",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Spicy_Chicken_Wings_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "spicy-chicken-wings": {
+      "name": "Spicy Chicken Wings",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark/v1/uk/dishes/267105/82172b401d635ee927b2375ece64a9b5",
+      "kind": "restaurant-photo"
+    },
+    "chicken-strips": {
+      "name": "Chicken Strips",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Chicken_Strips_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "dips": {
+      "name": "Dips",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/t_jet_ai_watermark_generic/v1/uk/generic-products/Mayonnaise_SIDES-0",
+      "kind": "just-eat-generic"
+    },
+    "desserts": {
+      "name": "Desserts",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Desserts_Cakes_Chocolate_Fudge_Cake_processed",
+      "kind": "just-eat-experiment"
+    },
+    "drinks": {
+      "name": "Drinks",
+      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
+      "kind": "just-eat-experiment"
+    }
+  }
+}
