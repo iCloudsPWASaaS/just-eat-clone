@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { adminFetch } from "@/components/admin/api";
 import { Card, ErrorNote, Field, PageTitle, Saving, Toggle } from "@/components/admin/ui";
 import ImageField from "@/components/admin/ImageField";
+import { ModifierEditor, type AdminModifierGroup } from "@/components/admin/Modifiers";
 import { money } from "@/lib/money";
 
 type Variation = {
@@ -15,6 +16,8 @@ type Variation = {
   calories: number | null;
   isAvailable: boolean;
   sortOrder: number;
+  /** Absent on rows cached before modifiers existed, hence the fallback. */
+  modifierGroups?: AdminModifierGroup[];
 };
 
 type Item = {
@@ -303,6 +306,7 @@ function CategoryBody({
           patchItem={patchItem}
           deleteItem={deleteItem}
           deleteVariation={deleteVariation}
+          onChanged={onChanged}
           setBusy={setBusy}
           setError={setError}
         />
@@ -319,6 +323,7 @@ function ItemRow({
   patchItem,
   deleteItem,
   deleteVariation,
+  onChanged,
   setBusy,
   setError,
 }: {
@@ -328,6 +333,7 @@ function ItemRow({
   patchItem: (id: string, patch: Record<string, unknown>, label: string) => Promise<void>;
   deleteItem: (id: string, name: string) => Promise<void>;
   deleteVariation: (id: string) => Promise<void>;
+  onChanged: () => void;
   setBusy: (k: string | null) => void;
   setError: (m: string | null) => void;
 }) {
@@ -346,6 +352,9 @@ function ItemRow({
   const [variations, setVariations] = useState<Variation[]>(item.variations ?? []);
   const [newVar, setNewVar] = useState({ name: "", price: "" });
   const [saveBusy, setSaveBusy] = useState(false);
+  // Modifier pickers save through their own endpoint, so which one is open is
+  // tracked per variation rather than folded into this row's draft.
+  const [openMods, setOpenMods] = useState<string | null>(null);
 
   // Sync local draft when the row re-renders after a save elsewhere.
   useEffect(() => {
@@ -422,6 +431,11 @@ function ItemRow({
             <span className="rounded-full bg-grey-lighter px-2 py-0.5 text-[10px] font-bold uppercase text-grey-midDark">
               {item.variations.length} sizes
             </span>
+            {item.variations.some((v) => (v.modifierGroups ?? []).length > 0) && (
+              <span className="rounded-full bg-grey-lighter px-2 py-0.5 text-[10px] font-bold uppercase text-grey-midDark">
+                {new Set(item.variations.flatMap((v) => (v.modifierGroups ?? []).map((g) => g.id))).size} customisations
+              </span>
+            )}
             {item.isPopular && (
               <span className="rounded-full bg-jet-offWhite px-2 py-0.5 text-[10px] font-bold uppercase text-orange-darkest">
                 Popular
@@ -523,41 +537,64 @@ function ItemRow({
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-grey-midDark">Sizes / portions</p>
             <ul className="space-y-1.5">
               {variations.map((v) => (
-                <li key={v.id} className="flex flex-wrap items-center gap-2">
-                  <input
-                    value={v.name}
-                    onChange={(e) => setVariations(variations.map((x) => (x.id === v.id ? { ...x, name: e.target.value } : x)))}
-                    className="je-input w-56 !py-1.5 text-sm"
-                  />
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-grey-midDark">{"\u00a3"}</span>
+                <li key={v.id} className="rounded-sm">
+                  <div className="flex flex-wrap items-center gap-2">
                     <input
-                      type="number"
-                      min={0}
-                      step="0.01"
-                      value={v.price}
-                      onChange={(e) =>
-                        setVariations(variations.map((x) => (x.id === v.id ? { ...x, price: Number(e.target.value) } : x)))
-                      }
-                      className="je-input w-28 !py-1.5 pl-7 text-sm"
+                      value={v.name}
+                      onChange={(e) => setVariations(variations.map((x) => (x.id === v.id ? { ...x, name: e.target.value } : x)))}
+                      className="je-input w-56 !py-1.5 text-sm"
                     />
+                    <div className="relative">
+                      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-grey-midDark">{"\u00a3"}</span>
+                      <input
+                        type="number"
+                        min={0}
+                        step="0.01"
+                        value={v.price}
+                        onChange={(e) =>
+                          setVariations(variations.map((x) => (x.id === v.id ? { ...x, price: Number(e.target.value) } : x)))
+                        }
+                        className="je-input w-28 !py-1.5 pl-7 text-sm"
+                      />
+                    </div>
+                    <Toggle
+                      checked={v.isAvailable}
+                      onChange={(next) => setVariations(variations.map((x) => (x.id === v.id ? { ...x, isAvailable: next } : x)))}
+                      label={v.isAvailable ? "On" : "Off"}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setOpenMods(openMods === v.id ? null : v.id)}
+                      className="je-btn-quiet !px-2.5 !py-1 text-xs"
+                    >
+                      Customisations ({(v.modifierGroups ?? []).length})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!window.confirm(`Remove variation "${v.name}"? This also removes its customisations.`)) return;
+                        setVariations(variations.filter((x) => x.id !== v.id));
+                        deleteVariation(v.id);
+                      }}
+                      className="text-xs font-bold text-red hover:underline"
+                    >
+                      Remove
+                    </button>
                   </div>
-                  <Toggle
-                    checked={v.isAvailable}
-                    onChange={(next) => setVariations(variations.map((x) => (x.id === v.id ? { ...x, isAvailable: next } : x)))}
-                    label={v.isAvailable ? "On" : "Off"}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (!window.confirm(`Remove variation "${v.name}"?`)) return;
-                      setVariations(variations.filter((x) => x.id !== v.id));
-                      deleteVariation(v.id);
-                    }}
-                    className="text-xs font-bold text-red hover:underline"
-                  >
-                    Remove
-                  </button>
+
+                  {openMods === v.id && !v.id.startsWith("new-") && (
+                    <ModifierEditor
+                      variationId={v.id}
+                      groups={v.modifierGroups ?? []}
+                      onChanged={onChanged}
+                      setError={setError}
+                    />
+                  )}
+                  {openMods === v.id && v.id.startsWith("new-") && (
+                    <p className="mt-2 text-xs text-grey-midDark">
+                      Save the dish first, then reopen to add customisations to this new size.
+                    </p>
+                  )}
                 </li>
               ))}
               {variations.length === 0 && (
