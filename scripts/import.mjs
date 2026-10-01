@@ -43,6 +43,13 @@ const supabase = createClient(URL, SERVICE_KEY, {
 const restaurantSeed = JSON.parse(readFileSync(join(ROOT, "data", "restaurant.json"), "utf8"));
 const menuSeed = JSON.parse(readFileSync(join(ROOT, "data", "menu.json"), "utf8"));
 
+// Written by scripts/parse-je-modifiers.mjs. Absent until that has been run, in
+// which case items simply have no "choose your ..." pickers.
+const modifiersPath = join(ROOT, "data", "modifiers.json");
+const modifierSeed = existsSync(modifiersPath)
+  ? JSON.parse(readFileSync(modifiersPath, "utf8"))
+  : { groups: [], variationGroups: {} };
+
 // Written by scripts/upload-images.mjs. Absent until images have been uploaded,
 // in which case the catalogue simply has no image_url values.
 const imageManifestPath = join(ROOT, "data", "images.json");
@@ -150,11 +157,20 @@ async function main() {
   // snapshotted, so past orders survive a re-import intact.
   console.log("\nClearing previous menu");
   check("menu cleared", (await supabase.from("menu_categories").delete().eq("restaurant_id", rid)).error);
+  // Modifier groups hang off the restaurant rather than the menu, so they
+  // survive the cascade above and have to be cleared explicitly. Options and
+  // variation links cascade from them.
+  check(
+    "modifiers cleared",
+    (await supabase.from("modifier_groups").delete().eq("restaurant_id", rid)).error
+  );
 
   // --- Menu --------------------------------------------------------------
   console.log(`\nMenu (${menuSeed.categories.length} categories)`);
   let itemCount = 0;
   let variationCount = 0;
+  /** Collected during the menu loop, inserted once the groups exist. */
+  const variationWithModifiers = [];
 
   for (const category of menuSeed.categories) {
     const { data: cat, error: cErr } = await supabase
@@ -206,12 +222,84 @@ async function main() {
         sort_order: idx,
       }));
 
-      const { error: vErr } = await supabase
+      const { data: variations, error: vErr } = await supabase
         .from("menu_item_variations")
-        .insert(variationRows);
+        .insert(variationRows)
+        .select("id, source_id");
       check(`    ${variationRows.length} variation(s)`, vErr);
       variationCount += variationRows.length;
+
+      // The picker data is keyed by our own variation source id, which we only
+      // know maps onto a row once the insert has returned.
+      for (const v of variations ?? []) {
+        const keys = v.source_id ? modifierSeed.variationGroups[v.source_id] : null;
+        if (keys?.length) {
+          variationWithModifiers.push({ variationId: v.id, keys });
+        }
+      }
     }
+  }
+
+  // --- Modifier groups ----------------------------------------------------
+  // Inserted after the menu so the variation links below have real uuids to
+  // point at. Groups are already deduplicated by parse-je-modifiers.mjs, so the
+  // 13 distinct groups here cover all 88 variations that have pickers.
+  console.log(`\nModifier groups (${modifierSeed.groups.length})`);
+  const groupIdByKey = new Map();
+  let optionCount = 0;
+
+  for (const [index, group] of modifierSeed.groups.entries()) {
+    const { error: gErr } = await supabase.from("modifier_groups").insert({
+      restaurant_id: rid,
+      source_id: group.key,
+      name: group.name,
+      description: group.description ?? null,
+      min_select: group.minSelect,
+      max_select: group.maxSelect,
+      sort_order: index,
+    });
+    check(`  group "${group.name}"`, gErr);
+
+    const { data: created, error: gReadErr } = await supabase
+      .from("modifier_groups")
+      .select("id")
+      .eq("restaurant_id", rid)
+      .eq("source_id", group.key)
+      .single();
+    if (gReadErr || !created) {
+      check("  group read-back", gReadErr ?? new Error("group not found after insert"));
+      continue;
+    }
+    groupIdByKey.set(group.key, created.id);
+
+    const optionRows = group.options.map((o, i) => ({
+      group_id: created.id,
+      name: o.name,
+      description: o.description ?? null,
+      price_delta: o.priceDelta ?? 0,
+      sort_order: i,
+    }));
+    if (optionRows.length) {
+      const { error: oErr } = await supabase.from("modifier_options").insert(optionRows);
+      check(`    ${optionRows.length} option(s)`, oErr);
+      optionCount += optionRows.length;
+    }
+  }
+
+  // --- Link groups to their variations ------------------------------------
+  const linkRows = [];
+  for (const { variationId, keys } of variationWithModifiers) {
+    keys.forEach((key, order) => {
+      const groupId = groupIdByKey.get(key);
+      if (groupId) linkRows.push({ group_id: groupId, variation_id: variationId, sort_order: order });
+    });
+  }
+  if (linkRows.length) {
+    // Primary key is (group_id, variation_id) so a re-run cannot duplicate.
+    const { error: lErr } = await supabase
+      .from("modifier_group_variations")
+      .upsert(linkRows, { onConflict: "group_id,variation_id" });
+    check(`group <-> variation links (${linkRows.length})`, lErr);
   }
 
   // --- Opening hours -----------------------------------------------------

@@ -55,10 +55,27 @@ export async function PUT(req: Request) {
       const itemId = typeof r.itemId === "string" ? r.itemId : null;
       const quantity = Number(r.quantity);
       if (!itemId || !Number.isInteger(quantity) || quantity < 1 || quantity > 50) return null;
+
+      // Option ids and quantities only. Prices are never accepted here — the
+      // stored basket is re-priced from the database at checkout.
+      const modifiers = Array.isArray(r.modifiers)
+        ? r.modifiers
+            .map((m) => {
+              const o = (m ?? {}) as Record<string, unknown>;
+              const optionId = typeof o.optionId === "string" ? o.optionId : null;
+              const qty = Number(o.quantity);
+              if (!optionId || !Number.isInteger(qty) || qty < 1 || qty > 20) return null;
+              return { optionId, quantity: qty };
+            })
+            .filter((m): m is { optionId: string; quantity: number } => m !== null)
+            .slice(0, 40)
+        : [];
+
       return {
         itemId,
         variationId: typeof r.variationId === "string" && r.variationId ? r.variationId : null,
         quantity,
+        modifiers,
         notes: typeof r.notes === "string" && r.notes ? r.notes.slice(0, 500) : null,
         fulfilmentType: r.fulfilmentType === "collection" ? "collection" : "delivery",
       };
@@ -86,6 +103,7 @@ export async function PUT(req: Request) {
         item_id: itemId,
         variation_id: l.variationId ? variationIds.get(l.variationId) ?? null : null,
         quantity: l.quantity,
+        modifiers: l.modifiers,
         notes: l.notes,
         fulfilment_type: l.fulfilmentType,
       };

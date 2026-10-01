@@ -38,7 +38,26 @@ export async function POST(req: Request) {
     ? String(body.paymentMethod)
     : "card";
 
-  const rawLines = Array.isArray(body.lines) ? (body.lines as RequestedLine[]).slice(0, 60) : [];
+  // Modifier option ids are the only thing trusted from the client here; the
+// prices and per-group caps are recomputed in priceLinesFromIds. Anything
+// malformed is dropped rather than rejected, so an old client that sends no
+// `modifiers` key still checks out.
+const rawLines = Array.isArray(body.lines)
+  ? (body.lines as RequestedLine[])
+      .slice(0, 60)
+      .map((l) => ({
+        ...l,
+        modifiers: Array.isArray(l?.modifiers)
+          ? l.modifiers
+              .map((m) => ({
+                optionId: typeof m?.optionId === "string" ? m.optionId : "",
+                quantity: Number(m?.quantity) || 0,
+              }))
+              .filter((m) => m.optionId && m.quantity > 0)
+              .slice(0, 40)
+          : [],
+      }))
+  : [];
   if (rawLines.length === 0) return jsonError("Your basket is empty.");
 
   const { restaurant, zones } = await getMenuData();
@@ -143,6 +162,9 @@ export async function POST(req: Request) {
       variation_id: l.variationId,
       name: l.name,
       variation_name: l.variationName,
+      // Names and deltas are snapshotted so the kitchen reads "large kebab: rice,
+      // garlic mayo" and the order still makes sense after the menu changes.
+      modifiers: l.modifiers,
       unit_price: l.unitPrice,
       quantity: l.quantity,
       notes: l.notes,

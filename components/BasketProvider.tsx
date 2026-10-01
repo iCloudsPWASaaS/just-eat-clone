@@ -12,7 +12,15 @@ import {
 } from "react";
 import { getCurrentUser, type AuthUser } from "@/lib/auth";
 import { priceBasket, round2, SERVICE_FEE, type PriceBreakdown } from "@/lib/pricing";
-import type { BasketLine, FulfilmentType, MenuItem, MenuVariation, Restaurant } from "@/lib/types";
+import {
+  lineIdentity,
+  type BasketLine,
+  type FulfilmentType,
+  type MenuItem,
+  type MenuVariation,
+  type ModifierSelection,
+  type Restaurant,
+} from "@/lib/types";
 
 const STORAGE_KEY = "justeat.basket.v1";
 const FULFILMENT_KEY = "justeat.fulfilment.v1";
@@ -32,19 +40,49 @@ type BasketContextValue = {
   setPostcode: (p: string) => void;
   setDiscount: (d: number) => void;
   setOpen: (open: boolean) => void;
-  add: (item: MenuItem, variation: MenuVariation | null, quantity?: number) => void;
+  add: (
+    item: MenuItem,
+    variation: MenuVariation | null,
+    quantity?: number,
+    modifiers?: ModifierSelection[]
+  ) => void;
   remove: (lineId: string) => void;
   setQuantity: (lineId: string, quantity: number) => void;
   clear: () => void;
   quantityOf: (itemId: string, variationId: string | null) => number;
+  /** Every line for an item, so a card can show which customisations are in. */
+  linesForItem: (itemId: string) => BasketLine[];
   toggleFavourite: (itemId: string) => Promise<boolean>;
   isFavourite: (itemId: string) => boolean;
 };
 
 const BasketContext = createContext<BasketContextValue | null>(null);
 
-function lineKey(itemId: string, variationId: string | null) {
-  return `${itemId}::${variationId ?? "base"}`;
+/** Modifiers are part of the key so different choices stay separate lines. */
+function lineKey(itemId: string, variationId: string | null, modifiers: { optionId: string; quantity: number }[] = []) {
+  return lineIdentity(itemId, variationId, modifiers);
+}
+
+/**
+ * Fills in fields that a line saved by an older version of the app may be
+ * missing. Baskets live in localStorage indefinitely, so a basket written
+ * before modifier support was added has no `modifiers` key at all, and reading
+ * it as-is would crash every component that renders a line.
+ */
+function normaliseLines(raw: unknown): BasketLine[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((l): l is Record<string, unknown> => Boolean(l) && typeof l === "object")
+    .map((l) => {
+      const modifiers = Array.isArray(l.modifiers) ? l.modifiers : [];
+      return {
+        ...l,
+        modifiers: modifiers.filter(
+          (m): m is ModifierSelection =>
+            Boolean(m) && typeof m === "object" && typeof m.optionId === "string"
+        ),
+      } as unknown as BasketLine;
+    });
 }
 
 export function BasketProvider({
@@ -68,7 +106,7 @@ export function BasketProvider({
   useEffect(() => {
     try {
       const rawLines = window.localStorage.getItem(STORAGE_KEY);
-      if (rawLines) setLines(JSON.parse(rawLines));
+      if (rawLines) setLines(normaliseLines(JSON.parse(rawLines)));
       const rawFulfilment = window.localStorage.getItem(FULFILMENT_KEY);
       if (rawFulfilment === "delivery" || rawFulfilment === "collection") {
         setFulfilmentState(rawFulfilment);
@@ -128,6 +166,12 @@ export function BasketProvider({
             variationId: l.variationId,
             quantity: l.quantity,
             notes: l.notes,
+            // Option ids and quantities only; the server re-prices from the
+            // database, exactly as it does for the dish itself.
+            modifiers: l.modifiers.map((m) => ({
+              optionId: m.optionId,
+              quantity: m.quantity,
+            })),
             fulfilmentType: fulfilment,
           })),
         }),
@@ -139,16 +183,23 @@ export function BasketProvider({
   }, [lines, user, hydrated, fulfilment]);
 
   const add = useCallback(
-    (item: MenuItem, variation: MenuVariation | null, quantity = 1) => {
-      const key = lineKey(item.id, variation?.id ?? null);
-      const unitPrice = variation ? variation.price : item.basePrice;
+    (
+      item: MenuItem,
+      variation: MenuVariation | null,
+      quantity = 1,
+      modifiers: ModifierSelection[] = []
+    ) => {
+      const key = lineKey(item.id, variation?.id ?? null, modifiers);
+      const basePrice = variation ? variation.price : item.basePrice;
+      // Modifiers are a price delta on top of the dish, mirroring what the
+      // server recomputes in lib/orders.ts.
+      const delta = modifiers.reduce((sum, m) => sum + m.priceDelta * m.quantity, 0);
+      const unitPrice = round2(basePrice + delta);
       setLines((prev) => {
-        const existing = prev.find(
-          (l) => lineKey(l.itemId, l.variationId) === key
-        );
+        const existing = prev.find((l) => l.id === key);
         if (existing) {
           return prev.map((l) =>
-            lineKey(l.itemId, l.variationId) === key
+            l.id === key
               ? {
                   ...l,
                   quantity: Math.min(l.quantity + quantity, 50),
@@ -165,6 +216,7 @@ export function BasketProvider({
             variationId: variation?.id ?? null,
             name: item.name,
             variationName: variation?.name ?? null,
+            modifiers,
             unitPrice,
             quantity,
             notes: null,
@@ -211,6 +263,11 @@ export function BasketProvider({
   );
 
   const isFavourite = useCallback((itemId: string) => favourites.includes(itemId), [favourites]);
+
+  const linesForItem = useCallback(
+    (itemId: string) => lines.filter((l) => l.itemId === itemId),
+    [lines]
+  );
 
   const toggleFavourite = useCallback(
     async (itemId: string) => {
@@ -261,6 +318,7 @@ export function BasketProvider({
       setQuantity,
       clear,
       quantityOf,
+      linesForItem,
       toggleFavourite,
       isFavourite,
     }),
@@ -280,6 +338,7 @@ export function BasketProvider({
       setQuantity,
       clear,
       quantityOf,
+      linesForItem,
       toggleFavourite,
       isFavourite,
     ]

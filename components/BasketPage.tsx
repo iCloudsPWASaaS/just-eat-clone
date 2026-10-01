@@ -83,6 +83,17 @@ export default function BasketPage({
                     {line.variationName && line.variationName !== "Standard" && (
                       <p className="text-sm text-grey-dark">{line.variationName}</p>
                     )}
+                    {line.modifiers.length > 0 && (
+                      <ul className="mt-0.5 space-y-0.5">
+                        {line.modifiers.map((m) => (
+                          <li key={m.optionId} className="text-sm text-grey-dark">
+                            {m.quantity > 1 ? `${m.quantity} × ` : ""}
+                            {m.optionName}
+                            {m.priceDelta > 0 && ` (+${money(m.priceDelta)})`}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     <p className="mt-1 text-sm text-grey-dark">
                       {money(line.unitPrice)} each
                     </p>

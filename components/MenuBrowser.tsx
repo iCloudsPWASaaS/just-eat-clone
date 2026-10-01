@@ -12,32 +12,79 @@ import {
   IconStarOutline,
 } from "@/components/Icons";
 import { money } from "@/lib/money";
-import type { MenuCategory, MenuItem } from "@/lib/types";
+import type {
+  MenuCategory,
+  MenuItem,
+  MenuVariation,
+  ModifierGroup,
+  ModifierOption,
+  ModifierSelection,
+} from "@/lib/types";
+
+/**
+ * Names a restaurant uses to mean "this dish has no size choice" rather than to
+ * name a size. Just Eat models these as a `NoVariation` with an empty label; the
+ * eateasy mirror we import from names them "Standard".
+ */
+const PLACEHOLDER_VARIATIONS = /^standard$/i;
+
+function isPlaceholderVariation(name: string): boolean {
+  return PLACEHOLDER_VARIATIONS.test(name.trim());
+}
+
+/** Total picked in a group, excluding one option — used for the remaining cap. */
+function countInWith(
+  group: ModifierGroup,
+  picked: Map<string, number>,
+  exceptOptionId: string
+): number {
+  return group.options.reduce(
+    (sum, o) => (o.id === exceptOptionId ? sum : sum + (picked.get(o.id) ?? 0)),
+    0
+  );
+}
+
+/** Short summary of the pickers on a dish, e.g. "Choose salad & sauce". */
+function pickNoun(groups: ModifierGroup[]): string | null {
+  const names = groups
+    .map((g) => g.name.replace(/^Choose\s+(your\s+)?/i, "").trim())
+    .filter(Boolean);
+  if (!names.length) return null;
+  if (names.length === 1) return `Choose ${names[0].toLowerCase()}`;
+  return `Choose ${names.slice(0, -1).map((n) => n.toLowerCase()).join(", ")} & ${names[names.length - 1].toLowerCase()}`;
+}
 
 export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: MenuItem[] }) {
-  const { add, quantityOf, setQuantity, isFavourite, toggleFavourite, user } = useBasket();
+  const { add, setQuantity, linesForItem, isFavourite, toggleFavourite, user } = useBasket();
   const [pickerFor, setPickerFor] = useState<MenuItem | null>(null);
   const [favBusy, setFavBusy] = useState(false);
 
-  const hasVariations = item.variations.length > 1;
   const defaultVariation = item.variations.find((v) => v.isDefault) ?? item.variations[0] ?? null;
 
-  // The stepper acts on whichever variation is actually in the basket, so a
-  // customer who picked the 14" can decrement it even though the card shows
-  // the default 10" as the headline price.
-  const activeVariationId =
-    item.variations.find((v) => quantityOf(item.id, v.id) > 0)?.id ??
-    defaultVariation?.id ??
-    null;
-  const inQuantity = quantityOf(item.id, activeVariationId);
-  const totalQuantity = item.variations.reduce((n, v) => n + quantityOf(item.id, v.id), 0);
+  // An item needs the picker when it has a choice to make: several real sizes,
+  // or any "choose your ..." group. A lone "Standard" variation is not a choice.
+  const hasGroups = item.variations.some((v) => v.modifierGroups.length > 0);
+  const hasVariations =
+    item.variations.filter((v) => !isPlaceholderVariation(v.name)).length > 1;
+  const needsPicker = hasVariations || hasGroups;
+
+  // Customisations make every line distinct, so the stepper works off the lines
+  // themselves rather than a single item/variation pair.
+  const lines = linesForItem(item.id);
+  const totalQuantity = lines.reduce((n, l) => n + l.quantity, 0);
   const favourite = isFavourite(item.id);
 
-  const lineId = (variationId: string | null) =>
-    `${item.id}::${variationId ?? "base"}`;
+  /** Distinct customisations already in the basket, e.g. "Garlic Mayo". */
+  const chosenLabels = useMemo(
+    () => Array.from(new Set(lines.flatMap((l) => l.modifiers.map((m) => m.optionName)))),
+    [lines]
+  );
+
+  // Step the first line that exists, or the most recently added one.
+  const activeLineId = lines[0]?.id ?? null;
 
   const onAdd = () => {
-    if (hasVariations) {
+    if (needsPicker) {
       setPickerFor(item);
       return;
     }
@@ -45,8 +92,8 @@ export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: 
   };
 
   const onDecrement = () => {
-    if (!activeVariationId) return;
-    setQuantity(lineId(activeVariationId), inQuantity - 1);
+    if (!activeLineId) return;
+    setQuantity(activeLineId, (lines[0]?.quantity ?? 1) - 1);
   };
 
   const onToggleFav = async () => {
@@ -91,6 +138,15 @@ export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: 
               </p>
             )}
 
+            {/* A hint rather than the pickers themselves — those live in the
+                modal, matching how Just Eat keeps long option lists out of the
+                scrolling menu. */}
+            {hasGroups && (
+              <p className="mt-1 text-xs font-medium text-grey-midDark">
+                {pickNoun(defaultVariation?.modifierGroups ?? [])}
+              </p>
+            )}
+
             <div className="mt-2 flex flex-wrap items-center gap-2">
               {item.isHalal && <span className="je-chip">Halal</span>}
               {item.isVegetarian && <span className="je-chip">Vegetarian</span>}
@@ -104,17 +160,19 @@ export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: 
             <div className="mt-3 flex items-center gap-3">
               <span className="text-base font-bold text-grey-darkest">{priceLabel}</span>
 
+              {chosenLabels.length > 0 && (
+                <span className="truncate text-xs text-grey-midDark">
+                  {chosenLabels.join(", ")}
+                </span>
+              )}
+
               {totalQuantity > 0 ? (
                 <div className="flex items-center gap-1 rounded-button border border-grey-midDark px-1">
                   <button
                     type="button"
                     onClick={onDecrement}
                     className="flex h-8 w-8 items-center justify-center text-grey-darkest hover:text-orange"
-                    aria-label={
-                      inQuantity <= 1
-                        ? `Remove ${item.name} from basket`
-                        : `Decrease quantity of ${item.name}`
-                    }
+                    aria-label={`Remove ${item.name} from basket`}
                   >
                     <IconMinus className="h-4 w-4" />
                   </button>
@@ -188,11 +246,88 @@ export function VariationPicker({
   const selected = item.variations.find((v) => v.id === selectedId) ?? item.variations[0];
   const [extras, setExtras] = useState<Map<string, number>>(new Map());
 
+  /**
+   * Pickers are keyed by option id and hold a quantity, so a group can allow
+   * "up to 5" of one option as easily as one of two. Reset whenever the chosen
+   * size changes, because each variation carries its own groups.
+   */
+  const [picked, setPicked] = useState<Map<string, number>>(new Map());
+
   /** Suggested dishes, minus the one being composed. */
   const others = useMemo(
     () => suggested.filter((s) => s.id !== item.id),
     [suggested, item.id]
   );
+
+  /**
+   * Variations that represent a real choice of size or style. A lone
+   * placeholder like "Standard" is the dish itself at a single price, so it is
+   * not shown as an option — it is still kept as the selected variation, since
+   * the modifier groups hang off it.
+   */
+  const sizes = useMemo(
+    () => item.variations.filter((v) => !isPlaceholderVariation(v.name)),
+    [item.variations]
+  );
+
+  const groups = useMemo(() => selected?.modifierGroups ?? [], [selected]);
+
+  // Switching size swaps the whole picker set, so stale choices must go.
+  useEffect(() => {
+    setPicked(new Map());
+  }, [selectedId]);
+
+  const countIn = (group: ModifierGroup) =>
+    group.options.reduce((sum, o) => sum + (picked.get(o.id) ?? 0), 0);
+
+  /**
+   * Applies a delta to one option, respecting the group's remaining allowance.
+   * Single-choice groups (maxSelect 1) simply overwrite, which is what makes the
+   * radio behave like a radio.
+   */
+  const bumpOption = (group: ModifierGroup, option: ModifierOption, delta: number) => {
+    setPicked((prev) => {
+      const next = new Map(prev);
+      if (group.maxSelect <= 1) {
+        // Clearing the group first makes "pick one" and "pick none" both work.
+        for (const o of group.options) next.delete(o.id);
+        if (delta > 0) next.set(option.id, 1);
+        return next;
+      }
+      const current = prev.get(option.id) ?? 0;
+      const wanted = Math.max(0, current + delta);
+      const others = countInWith(group, prev, option.id);
+      const capped = Math.min(wanted, group.maxSelect - others);
+      if (capped === 0) next.delete(option.id);
+      else next.set(option.id, capped);
+      return next;
+    });
+  };
+
+  const selections = useMemo<ModifierSelection[]>(() => {
+    const out: ModifierSelection[] = [];
+    for (const group of groups) {
+      for (const option of group.options) {
+        const quantity = picked.get(option.id) ?? 0;
+        if (quantity > 0) {
+          out.push({
+            groupId: group.id,
+            optionId: option.id,
+            groupName: group.name,
+            optionName: option.name,
+            quantity,
+            priceDelta: option.priceDelta,
+          });
+        }
+      }
+    }
+    return out;
+  }, [groups, picked]);
+
+  const modifiersDelta = selections.reduce((sum, s) => sum + s.priceDelta * s.quantity, 0);
+
+  /** Groups still short of their minimum — blocks Add until resolved. */
+  const incomplete = groups.filter((g) => countIn(g) < g.minSelect);
 
   const carouselRef = useRef<HTMLUListElement>(null);
   const [canLeft, setCanLeft] = useState(false);
@@ -236,7 +371,7 @@ export function VariationPicker({
     });
 
   const extrasTotal = others.reduce((sum, s) => sum + priceOf(s) * countOf(s.id), 0);
-  const total = (selected?.price ?? 0) + extrasTotal;
+  const total = (selected?.price ?? 0) + modifiersDelta + extrasTotal;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -251,8 +386,8 @@ export function VariationPicker({
   }, [onClose]);
 
   const confirm = () => {
-    if (!selected) return;
-    add(item, selected, 1);
+    if (!selected || incomplete.length > 0) return;
+    add(item, selected, 1, selections);
     for (const s of others) {
       const n = countOf(s.id);
       if (n > 0) add(s, s.variations[0] ?? null, n);
@@ -274,11 +409,20 @@ export function VariationPicker({
         className="relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-card bg-white shadow-raised sm:rounded-card"
       >
         <div className="je-no-scrollbar min-h-0 flex-1 overflow-y-auto p-5">
-          {/* Dish image first, then the name — Just Eat's item-card layout */}
-          <div className="flex items-center gap-4">
+          {/* Dish image first, then the name and price — Just Eat's item-card
+              layout. The price lives here rather than in the size list because
+              a one-price item has no size list to hang it off. */}
+          <div className="flex items-start gap-4">
             <DishImage item={item} className="h-20 w-20" />
-            <div className="min-w-0">
-              <h3 className="text-lg font-bold text-grey-darkest">{item.name}</h3>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="min-w-0 text-lg font-bold text-grey-darkest">
+                  {item.name}
+                </h3>
+                <span className="shrink-0 text-lg font-extrabold text-grey-darkest">
+                  {money((selected?.price ?? item.basePrice) + modifiersDelta)}
+                </span>
+              </div>
               {item.description && (
                 <p className="mt-1 text-sm leading-relaxed text-grey-dark">
                   {item.description}
@@ -287,40 +431,54 @@ export function VariationPicker({
             </div>
           </div>
 
-          {/* 1 Required — the dish itself */}
-          <fieldset className="mt-4">
-            <legend className="je-label">
-              <span className="font-bold text-grey-darkest">{item.name}</span>
-              <span className="ml-1 font-medium text-grey-midDark">1 required</span>
-            </legend>
-            <div className="space-y-2">
-              {item.variations.map((v) => {
-                const active = v.id === selected?.id;
-                return (
-                  <label
-                    key={v.id}
-                    className={`flex cursor-pointer items-center gap-3 rounded-button border px-3 py-2.5 transition ${
-                      active
-                        ? "border-orange bg-orange-offWhite"
-                        : "border-grey-light hover:border-grey-midDark"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name={`variation-${item.id}`}
-                      className="h-4 w-4 accent-[#f36d00]"
-                      checked={active}
-                      onChange={() => setSelectedId(v.id)}
-                    />
-                    <span className="flex-1 text-sm font-semibold text-grey-darkest">
-                      {v.name}
-                    </span>
-                    <span className="text-sm font-bold text-grey-darkest">{money(v.price)}</span>
-                  </label>
-                );
-              })}
-            </div>
-          </fieldset>
+          {/* Size picker. Only worth showing when there is a choice to make —
+              a single "Standard" variation is the dish at its one price, not a
+              decision, and Just Eat omits the group entirely in that case. */}
+          {sizes.length > 1 && (
+            <fieldset className="mt-4">
+              <legend className="je-label">
+                <span className="font-bold text-grey-darkest">{item.name}</span>
+                <span className="ml-1 font-medium text-grey-midDark">1 required</span>
+              </legend>
+              <div className="space-y-2">
+                {sizes.map((v) => {
+                  const active = v.id === selected?.id;
+                  return (
+                    <label
+                      key={v.id}
+                      className={`flex cursor-pointer items-center gap-3 rounded-button border px-3 py-2.5 transition ${
+                        active
+                          ? "border-orange bg-orange-offWhite"
+                          : "border-grey-light hover:border-grey-midDark"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name={`variation-${item.id}`}
+                        className="h-4 w-4 accent-[#f36d00]"
+                        checked={active}
+                        onChange={() => setSelectedId(v.id)}
+                      />
+                      <span className="flex-1 text-sm font-semibold text-grey-darkest">
+                        {v.name}
+                      </span>
+                      <span className="text-sm font-bold text-grey-darkest">{money(v.price)}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+          )}
+
+          {/* The "choose your ..." pickers, in the order the restaurant set them */}
+          {groups.map((group) => (
+            <ModifierPicker
+              key={group.id}
+              group={group}
+              picked={picked}
+              onBump={bumpOption}
+            />
+          ))}
 
           {/* Have you seen — side dishes whose price lands in the total below */}
           {others.length > 0 && (
@@ -423,13 +581,179 @@ export function VariationPicker({
             <button type="button" onClick={onClose} className="je-btn-secondary">
               Cancel
             </button>
-            <button type="button" onClick={confirm} className="je-btn-primary">
-              Add &middot; {money(total)}
+            <button
+              type="button"
+              onClick={confirm}
+              className="je-btn-primary disabled:cursor-not-allowed disabled:opacity-45"
+              disabled={incomplete.length > 0}
+            >
+              {incomplete.length > 0
+                ? `Choose ${incomplete.length} more`
+                : `Add · ${money(total)}`}
             </button>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * One "choose your ..." group.
+ *
+ * The control follows the source data: `maxSelect` of 1 renders radios, higher
+ * values render checkboxes with a quantity stepper, and `minSelect` decides
+ * whether the header says "Optional" or "N Required". Long option lists
+ * collapse behind "Show N more", which is what Just Eat does for its 20-option
+ * topping list.
+ */
+function ModifierPicker({
+  group,
+  picked,
+  onBump,
+}: {
+  group: ModifierGroup;
+  picked: Map<string, number>;
+  onBump: (group: ModifierGroup, option: ModifierOption, delta: number) => void;
+}) {
+  const single = group.maxSelect <= 1;
+  const [expanded, setExpanded] = useState(false);
+  const VISIBLE = 4;
+
+  const chosen = group.options.reduce((n, o) => n + (picked.get(o.id) ?? 0), 0);
+  const hidden = single ? 0 : group.maxSelect - chosen;
+
+  // Anything already chosen stays visible, so a selection further down the list
+  // does not vanish behind the expander.
+  const shown = expanded
+    ? group.options
+    : group.options
+        .slice(0, VISIBLE)
+        .concat(group.options.slice(VISIBLE).filter((o) => (picked.get(o.id) ?? 0) > 0));
+  const hiddenCount = group.options.length - shown.length;
+
+  const requirement =
+    group.minSelect > 0
+      ? `${group.minSelect} Required`
+      : "Optional";
+
+  return (
+    <fieldset className="mt-5 border-t border-grey-light pt-4">
+      <legend className="je-label w-full px-0">
+        <span className="font-bold text-grey-darkest">{group.name}</span>
+        <span className="ml-1 font-medium text-grey-midDark">{requirement}</span>
+        {!single && group.maxSelect > 1 && group.maxSelect < 20 && (
+          <span className="ml-1 font-medium text-grey-midDark">
+            &middot; up to {group.maxSelect}
+          </span>
+        )}
+      </legend>
+
+      <div className="space-y-2">
+        {shown.map((o) => {
+          const qty = picked.get(o.id) ?? 0;
+          const active = qty > 0;
+          const atCap = !single && chosen >= group.maxSelect && !active;
+
+          const row = (
+            <>
+              <input
+                type={single ? "radio" : "checkbox"}
+                name={`modifier-${group.id}`}
+                className="h-4 w-4 accent-[#f36d00]"
+                checked={active}
+                disabled={atCap}
+                onChange={() => onBump(group, o, active ? -qty : 1)}
+              />
+              <span className="flex-1 text-sm font-semibold text-grey-darkest">
+                {o.name}
+                {active && !single && qty > 1 && (
+                  <span className="ml-1.5 font-bold text-orange-aa">&times;{qty}</span>
+                )}
+              </span>
+              {o.priceDelta !== 0 && (
+                <span className="text-sm font-bold text-grey-darkest">
+                  {o.priceDelta > 0 ? "+" : ""}
+                  {money(o.priceDelta)}
+                </span>
+              )}
+            </>
+          );
+
+          return single ? (
+            <label
+              key={o.id}
+              className={`flex cursor-pointer items-center gap-3 rounded-button border px-3 py-2.5 transition ${
+                active
+                  ? "border-orange bg-orange-offWhite"
+                  : "border-grey-light hover:border-grey-midDark"
+              }`}
+            >
+              {row}
+            </label>
+          ) : (
+            <div
+              key={o.id}
+              className={`flex items-center gap-2 rounded-button border px-3 py-2 transition ${
+                active
+                  ? "border-orange bg-orange-offWhite"
+                  : atCap
+                    ? "border-grey-light opacity-50"
+                    : "border-grey-light hover:border-grey-midDark"
+              }`}
+            >
+              <label className="flex flex-1 cursor-pointer items-center gap-3">
+                {row}
+              </label>
+              {/* Repeats only make sense once an option is picked. */}
+              {active && group.maxSelect > 1 && (
+                <span className="flex shrink-0 items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => onBump(group, o, -1)}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-grey-light text-grey-darkest hover:border-grey-midDark"
+                    aria-label={`Remove one ${o.name}`}
+                  >
+                    <IconMinus className="h-3.5 w-3.5" />
+                  </button>
+                  <span className="w-4 text-center text-sm font-bold text-grey-darkest">
+                    {qty}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onBump(group, o, 1)}
+                    disabled={hidden <= 0}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-grey-light text-grey-darkest hover:border-orange hover:text-orange disabled:opacity-35"
+                    aria-label={`Add one ${o.name}`}
+                  >
+                    <IconPlus className="h-3.5 w-3.5" />
+                  </button>
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {hiddenCount > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="mt-2 text-sm font-bold text-orange-aa hover:underline"
+        >
+          Show {hiddenCount} more
+        </button>
+      )}
+      {expanded && group.options.length > VISIBLE && (
+        <button
+          type="button"
+          onClick={() => setExpanded(false)}
+          className="mt-2 text-sm font-bold text-grey-midDark hover:underline"
+        >
+          Show fewer
+        </button>
+      )}
+    </fieldset>
   );
 }
 

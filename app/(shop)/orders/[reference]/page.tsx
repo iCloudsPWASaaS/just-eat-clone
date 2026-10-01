@@ -181,6 +181,16 @@ export default async function OrderPage({
                   {item.variationName && item.variationName !== "Standard" && (
                     <span className="block text-xs text-grey-dark">{item.variationName}</span>
                   )}
+                  {item.modifiers.length > 0 && (
+                    <span className="mt-0.5 block space-y-0.5">
+                      {item.modifiers.map((m) => (
+                        <span key={m.optionId} className="block text-xs text-grey-dark">
+                          {m.quantity > 1 ? `${m.quantity} × ` : ""}
+                          {m.optionName}
+                        </span>
+                      ))}
+                    </span>
+                  )}
                   {item.notes && (
                     <span className="block text-xs text-grey-midDark">{item.notes}</span>
                   )}

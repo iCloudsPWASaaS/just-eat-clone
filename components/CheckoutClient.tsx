@@ -191,6 +191,12 @@ export default function CheckoutClient({ restaurant }: { restaurant: Restaurant 
             itemId: l.itemId,
             variationId: l.variationId,
             quantity: l.quantity,
+            // Option ids and quantities only. The server re-prices both the dish
+            // and its modifiers from the database, so nothing here is trusted.
+            modifiers: l.modifiers.map((m) => ({
+              optionId: m.optionId,
+              quantity: m.quantity,
+            })),
             notes: l.notes,
           })),
         }),
@@ -498,6 +504,17 @@ export default function CheckoutClient({ restaurant }: { restaurant: Restaurant 
                     </span>
                     {l.variationName && l.variationName !== "Standard" && (
                       <span className="block text-xs text-grey-dark">{l.variationName}</span>
+                    )}
+                    {l.modifiers.length > 0 && (
+                      <span className="mt-0.5 block space-y-0.5">
+                        {l.modifiers.map((m) => (
+                          <span key={m.optionId} className="block text-xs text-grey-dark">
+                            {m.quantity > 1 ? `${m.quantity} × ` : ""}
+                            {m.optionName}
+                            {m.priceDelta > 0 && ` (+${money(m.priceDelta)})`}
+                          </span>
+                        ))}
+                      </span>
                     )}
                   </span>
                   <span className="shrink-0 font-semibold text-grey-darkest">

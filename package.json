@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit",
     "parse:menu": "node scripts/parse-menu.js",
     "parse:je-images": "node scripts/parse-je-images.mjs",
+    "parse:je-modifiers": "node scripts/parse-je-modifiers.mjs",
     "upload:images": "node --env-file=.env scripts/upload-images.mjs",
     "import:data": "node --env-file=.env scripts/import.mjs",
     "smoke:admin": "node --env-file=.env scripts/admin-smoke.mjs"

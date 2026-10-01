@@ -1,0 +1,972 @@
+{
+  "source": "just-eat.co.uk __NEXT_DATA__ cdn.modifierGroups / cdn.modifierSets",
+  "generatedAt": "2026-10-01T01:53:37.737Z",
+  "groups": [
+    {
+      "key": "3544871fe770",
+      "name": "Choose your Drink",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Coca-Cola 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Pepsi 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "7up 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Diet Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Tango Orange 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Tango Apple 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Dr Pepper 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Rio 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Fruit Shoot 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Zero Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Cherry Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Pepsi Max 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Diet Pepsi 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Water 500ml",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "af87afd35e42",
+      "name": "Salt and Vinegar",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "No Salt and Vinegar",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Only Salt",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Only Vinegar",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Salt and Vinegar",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "1d3abd63498c",
+      "name": "Choose Your Salad",
+      "description": null,
+      "minSelect": 0,
+      "maxSelect": 5,
+      "options": [
+        {
+          "name": "Lettuce",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Cucumber",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Tomato",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Red Cabbage",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Onion",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "No Salad",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "All Salad",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "ef8c94d422bf",
+      "name": "Choose Your Sauce",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Mayo",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Garlic Mayo",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Bbq Sauce",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Burger Sauce",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Chilli Sauce",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "No Sauce",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "39856832c0a2",
+      "name": "Choose Rice or Chips",
+      "description": null,
+      "minSelect": 0,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Kebab on rice",
+          "description": null,
+          "priceDelta": 2
+        },
+        {
+          "name": "Kebab On chips",
+          "description": null,
+          "priceDelta": 2
+        }
+      ]
+    },
+    {
+      "key": "c4c9e1da86a8",
+      "name": "Choose Bottle Drink",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Coca-Cola 1.5ltr",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Diet Coke 1.5ltr",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Sprite 1.5ltr",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Fanta Orange 1.5ltr",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "83360a030041",
+      "name": "Choose Extra Toppings",
+      "description": null,
+      "minSelect": 0,
+      "maxSelect": 20,
+      "options": [
+        {
+          "name": "Cheese",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Onions",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Mushrooms",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Peppers",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Jalapenos",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Sweetcorn",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Olives",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Fresh Tomato",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Peperoni",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Meatballs",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Turkey Ham",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Turkey Bacon",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Beef",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Donner",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Chicken",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Chicken Shawarma",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Tandoori Chicken",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Tuna",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Prawns",
+          "description": null,
+          "priceDelta": 1.2
+        },
+        {
+          "name": "Anchovies",
+          "description": null,
+          "priceDelta": 1.2
+        }
+      ]
+    },
+    {
+      "key": "c38bb01e16fc",
+      "name": "Choose Extra Toppings",
+      "description": null,
+      "minSelect": 0,
+      "maxSelect": 20,
+      "options": [
+        {
+          "name": "Cheese",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Onions",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Mushrooms",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Peppers",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Jalapenos",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Sweetcorn",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Olives",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Fresh Tomato",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Peperoni",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Meatballs",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Turkey Ham",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Turkey Bacon",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Beef",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Donner",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Chicken",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Chicken Shawarma",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Tandoori Chicken",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Tuna",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Prawns",
+          "description": null,
+          "priceDelta": 1.8
+        },
+        {
+          "name": "Anchovies",
+          "description": null,
+          "priceDelta": 1.8
+        }
+      ]
+    },
+    {
+      "key": "bafc6224e3c0",
+      "name": "Choose Donner and Chicken Shawarma or Chicken Strips.",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Donner and Chicken Shawarma",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Chicken Strips",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "be6741e721b3",
+      "name": "Choose 2 Drinks",
+      "description": null,
+      "minSelect": 2,
+      "maxSelect": 2,
+      "options": [
+        {
+          "name": "Coca-Cola 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Pepsi 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "7up 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Diet Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Tango Orange 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Tango Apple 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Dr Pepper 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Rio 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Fruit Shoot 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Zero Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Cherry Coke 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Pepsi Max 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Diet Pepsi 330ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Water 500ml",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "5c0e0b78cae9",
+      "name": "Choose Fruit Shoot Orange or Blackcurrent",
+      "description": null,
+      "minSelect": 1,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Fruit Shoot Orange 200ml",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Fruit Shoot Blackcurrent 200ml",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "16e4ec97fef4",
+      "name": "Choose 3",
+      "description": null,
+      "minSelect": 3,
+      "maxSelect": 3,
+      "options": [
+        {
+          "name": "Chicken Shawarma",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Chicken Shish",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Doner Kebab",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Kofta",
+          "description": null,
+          "priceDelta": 0
+        },
+        {
+          "name": "Lamb Shish",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    },
+    {
+      "key": "0cf7dcc9cbd2",
+      "name": "Choose Spicy",
+      "description": null,
+      "minSelect": 0,
+      "maxSelect": 1,
+      "options": [
+        {
+          "name": "Spicy",
+          "description": null,
+          "priceDelta": 0
+        }
+      ]
+    }
+  ],
+  "variationGroups": {
+    "251448461-0": [
+      "c38bb01e16fc"
+    ],
+    "251448462-1": [
+      "83360a030041"
+    ],
+    "251448463-0": [
+      "c38bb01e16fc"
+    ],
+    "251448464-1": [
+      "83360a030041"
+    ],
+    "251448465-0": [
+      "c38bb01e16fc"
+    ],
+    "251448466-1": [
+      "83360a030041"
+    ],
+    "251448467-0": [
+      "c38bb01e16fc"
+    ],
+    "251448468-1": [
+      "83360a030041"
+    ],
+    "251448469-0": [
+      "c38bb01e16fc"
+    ],
+    "251448470-1": [
+      "83360a030041"
+    ],
+    "251448471-0": [
+      "c38bb01e16fc"
+    ],
+    "251448472-1": [
+      "83360a030041"
+    ],
+    "251448473-0": [
+      "c38bb01e16fc"
+    ],
+    "251448474-1": [
+      "83360a030041"
+    ],
+    "251448475-0": [
+      "c38bb01e16fc"
+    ],
+    "251448476-1": [
+      "83360a030041"
+    ],
+    "251448477-0": [
+      "c38bb01e16fc"
+    ],
+    "251448478-1": [
+      "83360a030041"
+    ],
+    "251448479-0": [
+      "c38bb01e16fc"
+    ],
+    "251448480-1": [
+      "83360a030041"
+    ],
+    "251448481-0": [
+      "c38bb01e16fc"
+    ],
+    "251448482-1": [
+      "83360a030041"
+    ],
+    "251448483-0": [
+      "c38bb01e16fc"
+    ],
+    "251448484-1": [
+      "83360a030041"
+    ],
+    "251448485-0": [
+      "c38bb01e16fc"
+    ],
+    "251448486-1": [
+      "83360a030041"
+    ],
+    "251448489-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448490-1": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448491-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448492-1": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448493-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448494-1": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448495-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448496-1": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448497-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448498-1": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448499-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448500-0": [
+      "39856832c0a2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448501-0": [
+      "16e4ec97fef4",
+      "ef8c94d422bf",
+      "1d3abd63498c"
+    ],
+    "251448502-0": [
+      "be6741e721b3",
+      "af87afd35e42"
+    ],
+    "251448503-0": [
+      "c4c9e1da86a8",
+      "af87afd35e42"
+    ],
+    "251448505-0": [
+      "c4c9e1da86a8",
+      "af87afd35e42"
+    ],
+    "251448506-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448507-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448508-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448509-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448510-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448511-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448512-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448513-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448514-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448515-0": [
+      "3544871fe770",
+      "af87afd35e42"
+    ],
+    "251448516-0": [
+      "0cf7dcc9cbd2",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448517-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448518-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448519-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448520-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448521-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448522-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448523-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448524-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448525-0": [
+      "bafc6224e3c0",
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448526-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448527-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448528-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448529-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448530-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448531-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448532-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448533-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448534-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448535-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448536-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448537-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448538-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448539-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448540-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448541-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448542-0": [
+      "1d3abd63498c",
+      "ef8c94d422bf"
+    ],
+    "251448543-1": [
+      "1d3abd63498c",
+      "3544871fe770",
+      "ef8c94d422bf"
+    ],
+    "251448553-0": [
+      "af87afd35e42"
+    ],
+    "251448554-1": [
+      "af87afd35e42"
+    ],
+    "251448555-0": [
+      "af87afd35e42"
+    ],
+    "251448556-1": [
+      "af87afd35e42"
+    ],
+    "251448557-0": [
+      "af87afd35e42"
+    ],
+    "251448608-0": [
+      "5c0e0b78cae9"
+    ],
+    "251448609-0": [
+      "5c0e0b78cae9"
+    ],
+    "251448610-0": [
+      "5c0e0b78cae9"
+    ]
+  }
+}

@@ -177,6 +177,17 @@ export default function BasketPanel({ restaurant }: { restaurant: Restaurant }) 
                               {line.variationName}
                             </p>
                           )}
+                          {line.modifiers.length > 0 && (
+                            <ul className="mt-0.5 space-y-0.5">
+                              {line.modifiers.map((m) => (
+                                <li key={m.optionId} className="truncate text-xs text-grey-dark">
+                                  {m.quantity > 1 ? `${m.quantity} × ` : ""}
+                                  {m.optionName}
+                                  {m.priceDelta > 0 && ` (+${money(m.priceDelta)})`}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                           <p className="mt-0.5 text-sm text-grey-dark">
                             {money(line.lineTotal)}
                           </p>

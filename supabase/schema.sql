@@ -168,17 +168,37 @@ create table if not exists justeat.menu_item_variations (
 create index if not EXISTS menu_item_variations_item_idx
   on justeat.menu_item_variations (item_id, sort_order);
 
--- Modifier groups are the "choose your ..." pickers (e.g. pick 3 kebabs).
+-- Modifier groups are the "choose your ..." pickers ("Choose Your Salad",
+-- "Choose Extra Toppings"). min_select drives required vs optional and
+-- max_select drives single-choice (radio) vs multi-choice (checkbox): 1 means
+-- radio, anything higher allows repeats with a quantity stepper.
 create table if not exists justeat.modifier_groups (
   id             uuid primary key default gen_random_uuid(),
   restaurant_id  uuid not null references justeat.restaurants(id) on delete cascade,
+  -- stable hash of (name, min, max, options) from the source payload, so a
+  -- re-import reuses the same row instead of creating a duplicate group
+  source_id      text,
   name           text not null,
   description    text,
-  min_select     integer not null default 0,
-  max_select     integer not null default 1,
+  min_select     integer not null default 0 check (min_select >= 0),
+  max_select     integer not null default 1 check (max_select >= 1),
   sort_order     integer not null default 0
 );
 
+-- Groups attach to a *variation*, not to the item. A 14" and a 10" of the same
+-- pizza carry different groups because the topping price differs (+£1.80 vs
+-- +£1.20), so per-item linking could not represent this menu.
+create table if not exists justeat.modifier_group_variations (
+  group_id     uuid not null references justeat.modifier_groups(id) on delete cascade,
+  variation_id uuid not null references justeat.menu_item_variations(id) on delete cascade,
+  sort_order   integer not null default 0,
+  primary key (group_id, variation_id)
+);
+create index if not exists modifier_group_variations_variation_idx
+  on justeat.modifier_group_variations (variation_id, sort_order);
+
+-- The original item-level link. Retained so an older importer or admin tool
+-- that still populates it keeps working; the app reads the variation table.
 create table if not exists justeat.modifier_group_items (
   group_id   uuid not null references justeat.modifier_groups(id) on delete cascade,
   item_id    uuid not null references justeat.menu_items(id) on delete cascade,
@@ -191,12 +211,40 @@ create table if not exists justeat.modifier_options (
   group_id      uuid not null references justeat.modifier_groups(id) on delete cascade,
   name          text not null,
   description   text,
+  -- added to the variation price per unit of this option
   price_delta   numeric(10,2) not null default 0,
   is_available  boolean not null default true,
-  sort_order    integer not null default 0
+  sort_order    integer not null default 0,
+  unique (group_id, name)
 );
 create index if not exists modifier_options_group_idx
   on justeat.modifier_options (group_id, sort_order);
+
+-- Idempotent upgrades for databases created before modifier support landed.
+alter table justeat.modifier_groups add column if not exists source_id text;
+alter table justeat.modifier_groups add column if not exists description text;
+alter table justeat.modifier_options add column if not exists description text;
+
+-- A group with the same name twice in a row cannot be told apart, so collapse
+-- any such duplicates before adding the uniqueness guarantee.
+delete from justeat.modifier_options a
+  using justeat.modifier_options b
+ where a.ctid < b.ctid
+   and a.group_id = b.group_id
+   and a.name = b.name;
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint where conname = 'modifier_options_group_name_key'
+  ) then
+    alter table justeat.modifier_options
+      add constraint modifier_options_group_name_key unique (group_id, name);
+  end if;
+end
+$$;
+create unique index if not exists modifier_groups_source_key
+  on justeat.modifier_groups (restaurant_id, source_id)
+  where source_id is not null;
 
 -- ---------------------------------------------------------------------------
 -- DEALS / PROMOTIONS
@@ -347,11 +395,17 @@ create table if not exists justeat.basket_items (
   variation_id uuid references justeat.menu_item_variations(id) on delete cascade,
   quantity     integer not null default 1 check (quantity > 0 and quantity <= 50),
   notes        text,
+  -- Chosen modifier options as {optionId, groupId, quantity}. Snapshotted
+  -- names/prices are not stored here because this table is a scratch basket;
+  -- the authoritative copy is written onto order_items at checkout.
+  modifiers    jsonb not null default '[]'::jsonb check (jsonb_typeof(modifiers) = 'array'),
   fulfilment_type text not null default 'delivery'
     check (fulfilment_type in ('delivery', 'collection')),
   created_at   timestamptz not null default now(),
   updated_at   timestamptz not null default now()
 );
+alter table justeat.basket_items add column if not exists
+  modifiers jsonb not null default '[]'::jsonb;
 create index if not exists basket_items_user_idx on justeat.basket_items (user_id);
 
 drop trigger if exists trg_basket_items_updated_at on justeat.basket_items;
@@ -405,12 +459,18 @@ create table if not exists justeat.order_items (
   -- names/prices are snapshotted for the same reason as the address
   name         text not null,
   variation_name text,
+  -- unit_price and line_total already include the modifier deltas; this column
+  -- keeps the kitchen readable ("large kebab: rice, garlic mayo"), so the
+  -- choices are snapshotted with their names rather than referenced.
+  modifiers    jsonb not null default '[]'::jsonb check (jsonb_typeof(modifiers) = 'array'),
   unit_price   numeric(10,2) not null,
   quantity     integer not null check (quantity > 0),
   notes        text,
   line_total   numeric(10,2) not null
 );
 create index if not exists order_items_order_idx on justeat.order_items (order_id);
+alter table justeat.order_items add column if not exists
+  modifiers jsonb not null default '[]'::jsonb;
 
 create table if not exists justeat.order_status_history (
   id         uuid primary key default gen_random_uuid(),
@@ -473,6 +533,7 @@ alter table justeat.menu_items             enable row level security;
 alter table justeat.menu_item_variations    enable row level security;
 alter table justeat.modifier_groups        enable row level security;
 alter table justeat.modifier_group_items   enable row level security;
+alter table justeat.modifier_group_variations enable row level security;
 alter table justeat.modifier_options       enable row level security;
 alter table justeat.deals                  enable row level security;
 alter table justeat.faqs                   enable row level security;
@@ -497,7 +558,8 @@ declare
 begin
   foreach t in array array[
     'opening_hours','delivery_zones','menu_categories','menu_items','menu_item_variations',
-    'modifier_groups','modifier_group_items','modifier_options','deals','faqs'
+    'modifier_groups','modifier_group_items','modifier_group_variations','modifier_options',
+    'deals','faqs'
   ] loop
     execute format('drop policy if exists %I on justeat.%I;', t || '_read', t);
     execute format(
@@ -616,6 +678,7 @@ grant select on
   justeat.menu_item_variations,
   justeat.modifier_groups,
   justeat.modifier_group_items,
+  justeat.modifier_group_variations,
   justeat.modifier_options,
   justeat.deals,
   justeat.faqs,

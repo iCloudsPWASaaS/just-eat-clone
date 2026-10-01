@@ -54,6 +54,46 @@ export type MenuVariation = {
   price: number;
   calories: number | null;
   isDefault: boolean;
+  /** "Choose your sauce", "Choose extra toppings" — empty when none apply. */
+  modifierGroups: ModifierGroup[];
+};
+
+/**
+ * One of the "choose your ..." pickers on an item.
+ *
+ * `minSelect` decides optional vs required (0 = "Optional", otherwise
+ * "N required") and `maxSelect` decides the control: 1 renders radio buttons,
+ * higher values render checkboxes with a quantity stepper and a "Show N more"
+ * expander.
+ */
+export type ModifierGroup = {
+  id: string;
+  name: string;
+  description: string | null;
+  minSelect: number;
+  maxSelect: number;
+  sortOrder: number;
+  options: ModifierOption[];
+};
+
+export type ModifierOption = {
+  id: string;
+  name: string;
+  description: string | null;
+  /** Added to the variation price for each unit of this option. */
+  priceDelta: number;
+  isAvailable: boolean;
+  sortOrder: number;
+};
+
+/** A single choice made by the customer, as stored on a basket/order line. */
+export type ModifierSelection = {
+  groupId: string;
+  optionId: string;
+  groupName: string;
+  optionName: string;
+  quantity: number;
+  priceDelta: number;
 };
 
 export type MenuItem = {
@@ -129,12 +169,37 @@ export type MenuData = {
   zones: DeliveryZone[];
 };
 
+/**
+ * Identity of a basket line. Two kebabs with different sauces are two separate
+ * lines, so the chosen options have to be part of the key — order-independently,
+ * since picking the same two sauces in the opposite order is still one line.
+ *
+ * Pure and free of any server import, so the client basket and the server's
+ * re-pricing agree on what counts as the same line.
+ */
+export function lineIdentity(
+  itemId: string,
+  variationId: string | null,
+  modifiers: { optionId: string; quantity: number }[]
+): string {
+  const base = `${itemId}::${variationId ?? "base"}`;
+  if (!modifiers.length) return base;
+  const sig = modifiers
+    .map((m) => `${m.optionId}x${m.quantity}`)
+    .sort()
+    .join("+");
+  return `${base}#${sig}`;
+}
+
 export type BasketLine = {
   id: string;
   itemId: string;
   variationId: string | null;
   name: string;
   variationName: string | null;
+  /** Choices made in the "choose your ..." pickers. Empty for simple items. */
+  modifiers: ModifierSelection[];
+  /** Variation price plus every modifier delta — never a client-supplied price. */
   unitPrice: number;
   quantity: number;
   notes: string | null;
@@ -195,6 +260,8 @@ export type OrderItem = {
   variationId: string | null;
   name: string;
   variationName: string | null;
+  /** Snapshotted so a past order still reads correctly after the menu changes. */
+  modifiers: ModifierSelection[];
   unitPrice: number;
   quantity: number;
   notes: string | null;

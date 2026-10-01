@@ -12,6 +12,9 @@ import type {
   MenuData,
   MenuItem,
   MenuVariation,
+  ModifierGroup,
+  ModifierOption,
+  ModifierSelection,
   OpeningHour,
   Order,
   OrderItem,
@@ -40,6 +43,65 @@ const imageManifest: {
     return {};
   }
 })();
+
+/**
+ * Written by scripts/parse-je-modifiers.mjs. Keyed by our own variation source
+ * id, so the not-yet-imported site can render the same pickers as the seeded one.
+ */
+const modifierSeed: {
+  groups?: {
+    key: string;
+    name: string;
+    description: string | null;
+    minSelect: number;
+    maxSelect: number;
+    options: { name: string; description: string | null; priceDelta: number }[];
+  }[];
+  variationGroups?: Record<string, string[]>;
+} = (() => {
+  try {
+    const path = join(process.cwd(), "data", "modifiers.json");
+    return existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : {};
+  } catch {
+    return {};
+  }
+})();
+
+/**
+ * Builds the pickers for a seed variation. Option ids are namespaced by group
+ * key because the seed has no database ids yet; they only need to be stable
+ * and unique within the item.
+ */
+function seedGroups(variationSourceId: string): ModifierGroup[] {
+  const keys = modifierSeed.variationGroups?.[variationSourceId];
+  if (!keys?.length) return [];
+  const groups = modifierSeed.groups ?? [];
+
+  return keys
+    .map((key, index) => {
+      const group = groups.find((g) => g.key === key);
+      if (!group) return null;
+      const options: ModifierOption[] = group.options.map((o, i) => ({
+        id: `${key}-${i}`,
+        name: o.name,
+        description: o.description ?? null,
+        priceDelta: o.priceDelta ?? 0,
+        isAvailable: true,
+        sortOrder: i,
+      }));
+      if (!options.length) return null;
+      return {
+        id: `seed-${key}`,
+        name: group.name,
+        description: group.description ?? null,
+        minSelect: group.minSelect ?? 0,
+        maxSelect: group.maxSelect ?? 1,
+        sortOrder: index,
+        options,
+      };
+    })
+    .filter((g): g is ModifierGroup => g !== null);
+}
 
 /* -------------------------------------------------------------------------- */
 /* Row -> model mapping                                                       */
@@ -95,6 +157,48 @@ function mapRestaurant(r: Row): Restaurant {
   };
 }
 
+function mapOption(r: Row): ModifierOption {
+  return {
+    id: r.id,
+    name: r.name,
+    description: str(r.description),
+    priceDelta: num(r.price_delta),
+    isAvailable: r.is_available !== false,
+    sortOrder: num(r.sort_order),
+  };
+}
+
+function mapModifierGroup(r: Row): ModifierGroup {
+  const options: ModifierOption[] = Array.isArray(r.modifier_options)
+    ? r.modifier_options.map(mapOption).sort((a, b) => a.sortOrder - b.sortOrder)
+    : [];
+  return {
+    id: r.id,
+    name: r.name,
+    description: str(r.description),
+    minSelect: num(r.min_select),
+    // A group with no options cannot be satisfied, so treat it as optional and
+    // let the UI skip it rather than blocking checkout forever.
+    maxSelect: options.length ? Math.max(1, num(r.max_select, 1)) : 0,
+    sortOrder: num(r.sort_order),
+    options: options.filter((o) => o.isAvailable),
+  };
+}
+
+/**
+ * Modifier groups reach a variation through modifier_group_variations, and
+ * PostgREST flattens that many-to-many into repeated `modifier_groups` keys on
+ * the variation row.
+ */
+function variationGroups(r: Row): ModifierGroup[] {
+  const linked = r.modifier_group_variations;
+  if (!Array.isArray(linked)) return [];
+  const groups = linked
+    .map((link: Row) => mapModifierGroup(link.modifier_groups))
+    .filter((g: ModifierGroup) => g.maxSelect > 0);
+  return groups.sort((a, b) => a.sortOrder - b.sortOrder);
+}
+
 function mapVariation(r: Row): MenuVariation {
   return {
     id: r.id,
@@ -103,6 +207,7 @@ function mapVariation(r: Row): MenuVariation {
     price: num(r.price),
     calories: r.calories === null ? null : num(r.calories),
     isDefault: bool(r.is_default),
+    modifierGroups: variationGroups(r),
   };
 }
 
@@ -250,6 +355,7 @@ function mapOrder(r: Row): Order {
       variationId: i.variation_id ? String(i.variation_id) : null,
       name: i.name,
       variationName: str(i.variation_name),
+      modifiers: Array.isArray(i.modifiers) ? i.modifiers : [],
       unitPrice: num(i.unit_price),
       quantity: num(i.quantity),
       notes: str(i.notes),
@@ -343,6 +449,7 @@ function buildSeedData(): MenuData | null {
         price: v.price,
         calories: null,
         isDefault: idx === 0,
+        modifierGroups: seedGroups(v.sourceId),
       })),
     })),
   }));
@@ -403,7 +510,7 @@ export async function getMenuData(): Promise<MenuData> {
       supabase.from("opening_hours").select("*").eq("restaurant_id", id).order("day_of_week"),
       supabase
         .from("menu_categories")
-        .select("*, menu_items(*, menu_item_variations(*))")
+        .select("*, menu_items(*, menu_item_variations(*, modifier_group_variations(*, modifier_groups(*, modifier_options(*)))))")
         .eq("restaurant_id", id)
         .order("sort_order"),
       supabase.from("deals").select("*").eq("restaurant_id", id).eq("is_active", true).order("sort_order"),
@@ -519,6 +626,7 @@ export async function getBasketFor(
       variationId: r.variation_id,
       name: item?.name ?? "Item",
       variationName: variation?.name ?? null,
+      modifiers: Array.isArray(r.modifiers) ? r.modifiers : [],
       unitPrice,
       quantity,
       notes: str(r.notes),
