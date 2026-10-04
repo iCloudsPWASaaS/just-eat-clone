@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { adminStatus } from "@/lib/admin";
 import { AdminNav } from "@/components/admin/nav";
+import { SignOutButton } from "@/components/admin/SignOutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -28,9 +29,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             </Link>
             <AdminNav />
           </div>
-          <Link href="/" className="je-btn-secondary !py-2 text-xs">
-            View site
-          </Link>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link href="/" className="je-btn-secondary !py-2 text-xs">
+              View site
+            </Link>
+            <SignOutButton />
+          </div>
         </div>
       </header>
       <main className="je-container py-8">{children}</main>

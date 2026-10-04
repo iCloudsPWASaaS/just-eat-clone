@@ -6,12 +6,22 @@ export const dynamic = "force-dynamic";
 /**
  * CRUD for the ancillary content the site surfaces: deals, FAQs and opening
  * hours. The entity is selected with `type=deals|faqs|hours`.
+ *
+ * `hours` is the name the admin UI uses; the table it addresses is
+ * `opening_hours`. Keeping the mapping here means the UI and the API can agree
+ * on one public name without either knowing the table's name.
  */
-const TABLES = new Set(["deals", "faqs", "opening_hours"]);
+const TABLES: Record<string, string> = {
+  deals: "deals",
+  faqs: "faqs",
+  hours: "opening_hours",
+  opening_hours: "opening_hours",
+};
 
 function tableFor(body: Record<string, unknown>, reqUrl?: string) {
   const t = body.type ?? (reqUrl ? new URL(reqUrl).searchParams.get("type") : null);
-  return typeof t === "string" && TABLES.has(t) ? t : null;
+  if (typeof t !== "string") return null;
+  return TABLES[t] ?? null;
 }
 
 export async function GET(req: Request) {

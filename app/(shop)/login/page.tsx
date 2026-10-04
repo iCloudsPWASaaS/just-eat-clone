@@ -12,6 +12,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
   const [busy, setBusy] = useState(false);
+  const [resetBusy, setResetBusy] = useState(false);
   const [resetSent, setResetSent] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -39,11 +40,20 @@ export default function LoginPage() {
   };
 
   const onForgot = async () => {
+    // Supabase enforces a project-wide hourly send cap, so a double-click here
+    // can burn the whole quota. Refuse repeats once one is in flight or sent.
+    if (resetBusy || resetSent) return;
+
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setFieldErrors({ email: "Enter your email address first, then choose Forgot password." });
       return;
     }
+
+    setResetBusy(true);
+    setError(null);
     const res = await requestPasswordReset(email.trim());
+    setResetBusy(false);
+
     if (res.ok) setResetSent(true);
     else setError(res.error);
   };
@@ -110,9 +120,10 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={onForgot}
-                className="text-sm font-semibold text-blue hover:underline"
+                disabled={resetBusy || resetSent}
+                className="text-sm font-semibold text-blue hover:underline disabled:cursor-not-allowed disabled:text-grey-midDark disabled:no-underline"
               >
-                Forgot password?
+                {resetBusy ? "Sending\u2026" : resetSent ? "Link sent" : "Forgot password?"}
               </button>
             </div>
 

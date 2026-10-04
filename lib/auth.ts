@@ -22,6 +22,10 @@ function describe(err: { message: string } | null): string {
     "Email not confirmed": "Please confirm your email address before signing in.",
     "Password should be at least 6 characters.":
       "Your password needs to be at least 6 characters.",
+    "Email rate limit exceeded":
+      "Too many emails have been requested recently. Please wait an hour and try again.",
+    "Email address rate limit exceeded":
+      "Too many emails have been requested for this address. Please wait before trying again.",
   };
   return map[err.message] ?? err.message;
 }
