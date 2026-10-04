@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { siteUrl } from "@/lib/env";
 
 export type AuthUser = {
   id: string;
@@ -25,6 +26,19 @@ function describe(err: { message: string } | null): string {
   return map[err.message] ?? err.message;
 }
 
+/**
+ * Where an email link should send the recipient.
+ *
+ * `NEXT_PUBLIC_SITE_URL` wins so links always point at the deployed site even
+ * when the request was made from localhost. Supabase only honours a
+ * `redirectTo` that matches the project's allow-list, so when neither the env
+ * var nor a browser is available we send `undefined` and let Supabase fall back
+ * to the configured Site URL.
+ */
+function redirectBase(): string | undefined {
+  return siteUrl() ?? (typeof window !== "undefined" ? window.location.origin : undefined);
+}
+
 export async function getCurrentUser(): Promise<AuthUser | null> {
   const { data, error } = await supabase.auth.getUser();
   if (error || !data.user) return null;
@@ -48,6 +62,7 @@ export async function signup(input: {
   phone?: string;
   marketingOptIn?: boolean;
 }): Promise<AuthResult> {
+  const base = redirectBase();
   const { data, error } = await supabase.auth.signUp({
     email: input.email,
     password: input.password,
@@ -61,7 +76,7 @@ export async function signup(input: {
       },
       // Keep the user signed in straight after registering so they can go
       // straight to checkout without a second form.
-      emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/account` : undefined,
+      emailRedirectTo: base ? `${base}/account` : undefined,
     },
   });
 
@@ -98,11 +113,9 @@ export async function logout(): Promise<void> {
 }
 
 export async function requestPasswordReset(email: string): Promise<AuthResult> {
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo:
-      typeof window !== "undefined"
-        ? `${window.location.origin}/reset-password`
-        : undefined,
+  const base = redirectBase();
+  const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+    redirectTo: base ? `${base}/reset-password` : undefined,
   });
   if (error) return { ok: false, error: describe(error) };
   return { ok: true };
