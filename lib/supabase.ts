@@ -7,4 +7,9 @@ import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_SCHEMA, SUPABASE_URL } from "@/lib/e
 // authenticated route back to /login.
 export const supabase = createBrowserClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   db: { schema: SUPABASE_SCHEMA },
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+  },
 });

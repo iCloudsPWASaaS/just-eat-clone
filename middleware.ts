@@ -19,6 +19,10 @@ export async function middleware(req: NextRequest) {
   let supabaseResponse = NextResponse.next({ request: req });
   const supabase = createServerClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     db: { schema: SUPABASE_SCHEMA },
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+    },
     cookies: {
       getAll() {
         return req.cookies.getAll();

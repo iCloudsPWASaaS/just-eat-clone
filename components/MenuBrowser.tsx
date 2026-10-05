@@ -757,6 +757,83 @@ function ModifierPicker({
   );
 }
 
+/** Sticky category nav with scroll arrows. */
+function CategoryNav({ categories }: { categories: MenuCategory[] }) {
+  const stripRef = useRef<HTMLUListElement>(null);
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+
+  useEffect(() => {
+    const el = stripRef.current;
+    if (!el) return;
+    const update = () => {
+      setCanLeft(el.scrollLeft > 2);
+      setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 2);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollStrip = (dir: 1 | -1) => {
+    const el = stripRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.round(el.clientWidth * 0.8), behavior: "smooth" });
+  };
+
+  return (
+    <nav aria-label="Menu categories" className="sticky top-16 z-20 -mx-4 mb-6 border-y border-grey-light bg-white/95 px-4 backdrop-blur">
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => scrollStrip(-1)}
+          disabled={!canLeft}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-button border border-grey-light text-grey-darkest hover:bg-grey-lighter disabled:opacity-35"
+          aria-label="Scroll categories left"
+        >
+          <IconChevronLeft className="h-5 w-5" />
+        </button>
+        <ul ref={stripRef} className="je-no-scrollbar flex-1 flex gap-1 overflow-x-auto py-2">
+          {categories.map((c) => (
+            <li key={c.id}>
+              <a
+                href={`#${c.slug}`}
+                onClick={(e) => {
+                  const strip = e.currentTarget.closest<HTMLElement>(".je-no-scrollbar");
+                  if (!strip) return;
+                  const stripRect = strip.getBoundingClientRect();
+                  const tabRect = e.currentTarget.getBoundingClientRect();
+                  const target =
+                    strip.scrollLeft +
+                    (tabRect.left - stripRect.left) -
+                    (stripRect.width / 2 - tabRect.width / 2);
+                  strip.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
+                }}
+                className="block whitespace-nowrap rounded-button px-3 py-1.5 text-sm font-semibold text-grey-darkest hover:bg-grey-lighter"
+              >
+                {c.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          onClick={() => scrollStrip(1)}
+          disabled={!canRight}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-button border border-grey-light text-grey-darkest hover:bg-grey-lighter disabled:opacity-35"
+          aria-label="Scroll categories right"
+        >
+          <IconChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+    </nav>
+  );
+}
+
 /** Renders the whole menu: search + sticky category nav + item lists. */
 export function MenuBrowser({ categories }: { categories: MenuCategory[] }) {
   const [query, setQuery] = useState("");
@@ -807,36 +884,7 @@ export function MenuBrowser({ categories }: { categories: MenuCategory[] }) {
       </div>
 
       {/* Sticky category nav — the Just Eat pattern for long menus */}
-      <nav
-        aria-label="Menu categories"
-        className="sticky top-16 z-20 -mx-4 mb-6 border-y border-grey-light bg-white/95 px-4 backdrop-blur"
-      >
-        <ul className="je-no-scrollbar flex gap-1 overflow-x-auto py-2">
-          {visible.map((c) => (
-            <li key={c.id}>
-              <a
-                href={`#${c.slug}`}
-                onClick={(e) => {
-                  // Keep the clicked tab centred in the strip so the tabs
-                  // after it scroll into view (e.g. the last visible one).
-                  const strip = e.currentTarget.closest<HTMLElement>(".je-no-scrollbar");
-                  if (!strip) return;
-                  const stripRect = strip.getBoundingClientRect();
-                  const tabRect = e.currentTarget.getBoundingClientRect();
-                  const target =
-                    strip.scrollLeft +
-                    (tabRect.left - stripRect.left) -
-                    (stripRect.width / 2 - tabRect.width / 2);
-                  strip.scrollTo({ left: Math.max(0, target), behavior: "smooth" });
-                }}
-                className="block whitespace-nowrap rounded-button px-3 py-1.5 text-sm font-semibold text-grey-darkest hover:bg-grey-lighter"
-              >
-                {c.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <CategoryNav categories={visible} />
 
       {visible.length === 0 ? (
         <p className="je-card p-8 text-center text-sm text-grey-dark">

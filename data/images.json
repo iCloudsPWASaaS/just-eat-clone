@@ -1,11 +1,17 @@
 {
-  "generatedAt": "2026-09-30T00:42:56.669Z",
+  "generatedAt": "2026-10-05T16:42:37.741Z",
   "items": {
     "251448461": {
       "path": "menu/pizza/margherita-251448461.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/margherita-251448461.jpg",
       "kind": "restaurant-photo",
       "matchedBy": "exact"
+    },
+    "251448463": {
+      "path": "menu/pizza/peperoni-251448463.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/peperoni-251448463.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
     },
     "251448465": {
       "path": "menu/pizza/chicken-tikka-251448465.jpg",
@@ -31,6 +37,12 @@
       "kind": "just-eat-experiment",
       "matchedBy": "exact"
     },
+    "251448473": {
+      "path": "menu/pizza/donner-251448473.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/donner-251448473.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
     "251448475": {
       "path": "menu/pizza/chicken-shawarma-251448475.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/chicken-shawarma-251448475.jpg",
@@ -49,11 +61,35 @@
       "kind": "restaurant-photo",
       "matchedBy": "exact"
     },
+    "251448481": {
+      "path": "menu/pizza/hawaiian-251448481.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/hawaiian-251448481.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448483": {
+      "path": "menu/pizza/seafood-251448483.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/seafood-251448483.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448485": {
+      "path": "menu/pizza/veggie-251448485.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/veggie-251448485.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
     "251448487": {
       "path": "menu/garlic-bread/garlic-bread-251448487.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/garlic-bread/garlic-bread-251448487.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448488": {
+      "path": "menu/garlic-bread/10-garlic-bread-with-cheese-251448488.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/garlic-bread/10-garlic-bread-with-cheese-251448488.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448489": {
       "path": "menu/kebabs/donner-kebab-251448489.jpg",
@@ -97,6 +133,96 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448501": {
+      "path": "menu/kebabs/woodfarm-special-shish-kebab-251448501.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/woodfarm-special-shish-kebab-251448501.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448502": {
+      "path": "menu/family-meal/family-meal-1-251448502.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-meal-1-251448502.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448503": {
+      "path": "menu/family-meal/family-deal-2-251448503.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-deal-2-251448503.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448504": {
+      "path": "menu/family-meal/family-deal-3-251448504.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-deal-3-251448504.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448505": {
+      "path": "menu/family-meal/woodfarm-family-deal-4-people-251448505.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/woodfarm-family-deal-4-people-251448505.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448506": {
+      "path": "menu/meal-deals/meal-deal-1-251448506.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-1-251448506.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448507": {
+      "path": "menu/meal-deals/meal-deal-2-251448507.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-2-251448507.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448508": {
+      "path": "menu/meal-deals/meal-deal-3-251448508.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-3-251448508.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448509": {
+      "path": "menu/meal-deals/meal-deal-4-251448509.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-4-251448509.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448510": {
+      "path": "menu/meal-deals/meal-deal-5-251448510.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-5-251448510.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448511": {
+      "path": "menu/meal-deals/meal-deal-6-251448511.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-6-251448511.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448512": {
+      "path": "menu/meal-deals/meal-deal-7-251448512.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-7-251448512.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448513": {
+      "path": "menu/meal-deals/meal-deal-8-251448513.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-8-251448513.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448514": {
+      "path": "menu/meal-deals/meal-deal-9-251448514.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-9-251448514.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448515": {
+      "path": "menu/meal-deals/meal-deal-10-251448515.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-10-251448515.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
     "251448516": {
       "path": "menu/wraps/chicken-strips-wrap-251448516.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/chicken-strips-wrap-251448516.jpg",
@@ -121,17 +247,95 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448520": {
+      "path": "menu/wraps/lamb-shish-wrap-251448520.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/lamb-shish-wrap-251448520.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448521": {
+      "path": "menu/wraps/kofta-wrap-251448521.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/kofta-wrap-251448521.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448522": {
+      "path": "menu/wraps/veggie-wrap-251448522.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/veggie-wrap-251448522.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "generic-fix"
+    },
     "251448523": {
       "path": "menu/wraps/halloumi-wrap-251448523.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/halloumi-wrap-251448523.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448524": {
+      "path": "menu/wraps/falafel-and-houmous-wrap-251448524.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/falafel-and-houmous-wrap-251448524.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "generic-fix"
+    },
+    "251448525": {
+      "path": "menu/wraps/mixed-wrap-251448525.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/mixed-wrap-251448525.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448526": {
+      "path": "menu/burgers/cheeseburger-251448526.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/cheeseburger-251448526.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448528": {
+      "path": "menu/burgers/double-cheeseburger-251448528.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/double-cheeseburger-251448528.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448530": {
+      "path": "menu/burgers/chicken-burger-251448530.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/chicken-burger-251448530.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448532": {
+      "path": "menu/burgers/double-chicken-burger-251448532.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/double-chicken-burger-251448532.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
     "251448534": {
       "path": "menu/burgers/donner-burger-251448534.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/donner-burger-251448534.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448536": {
+      "path": "menu/burgers/egg-burger-251448536.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/egg-burger-251448536.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448538": {
+      "path": "menu/burgers/halloumi-burger-251448538.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/halloumi-burger-251448538.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448540": {
+      "path": "menu/burgers/veggie-burger-251448540.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/veggie-burger-251448540.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448542": {
+      "path": "menu/burgers/woodfarm-special-burger-251448542.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/woodfarm-special-burger-251448542.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448544": {
       "path": "menu/sides/onion-rings-10pcs-251448544.jpg",
@@ -150,6 +354,12 @@
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/potato-wedges-251448546.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448547": {
+      "path": "menu/sides/popcorn-chicken-16pcs-251448547.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/popcorn-chicken-16pcs-251448547.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448548": {
       "path": "menu/sides/chicken-nuggets-8pcs-251448548.jpg",
@@ -199,11 +409,35 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448558": {
+      "path": "menu/fried-chicken-and-wings/1pc-fried-chicken-251448558.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/1pc-fried-chicken-251448558.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448559": {
+      "path": "menu/fried-chicken-and-wings/2pc-fried-chicken-251448559.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/2pc-fried-chicken-251448559.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
     "251448560": {
       "path": "menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/spicy-chicken-wings-251448560.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448561": {
+      "path": "menu/fried-chicken-and-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448561.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448561.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448562": {
+      "path": "menu/fried-chicken-and-wings/10-pcs-spicy-wings-a-fiery-feast-251448562.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/10-pcs-spicy-wings-a-fiery-feast-251448562.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448563": {
       "path": "menu/fried-chicken-and-wings/chicken-strips-251448563.jpg",
@@ -211,11 +445,29 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448564": {
+      "path": "menu/fried-chicken-and-wings/4-pcs-251448564.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/4-pcs-251448564.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
     "251448565": {
       "path": "menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/spicy-chicken-wings-251448565.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448566": {
+      "path": "menu/spicy-chicken-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448566.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448566.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448567": {
+      "path": "menu/spicy-chicken-wings/10-pcs-spicy-wings-a-fiery-feast-251448567.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/10-pcs-spicy-wings-a-fiery-feast-251448567.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448568": {
       "path": "menu/spicy-chicken-wings/spicy-chicken-wings-251448568.jpg",
@@ -223,11 +475,23 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448569": {
+      "path": "menu/spicy-chicken-wings/4-pcs-251448569.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/4-pcs-251448569.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
     "251448570": {
       "path": "menu/chicken-strips/chicken-strips-251448570.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chicken-strips/chicken-strips-251448570.jpg",
       "kind": "just-eat-generic",
       "matchedBy": "exact"
+    },
+    "251448571": {
+      "path": "menu/chicken-strips/4-pcs-chicken-strips-perfect-for-a-light-meal-or-251448571.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chicken-strips/4-pcs-chicken-strips-perfect-for-a-light-meal-or-251448571.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     },
     "251448572": {
       "path": "menu/dips/mayonnaise-251448572.jpg",
@@ -265,11 +529,23 @@
       "kind": "just-eat-generic",
       "matchedBy": "exact"
     },
+    "251448578": {
+      "path": "menu/desserts/baklava-2pcs-251448578.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/baklava-2pcs-251448578.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
     "251448579": {
       "path": "menu/desserts/chocolate-fudge-cake-251448579.jpg",
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/chocolate-fudge-cake-251448579.jpg",
       "kind": "just-eat-experiment",
       "matchedBy": "exact"
+    },
+    "251448580": {
+      "path": "menu/desserts/pistachio-cake-251448580.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/pistachio-cake-251448580.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
     },
     "251448581": {
       "path": "menu/desserts/strawberry-cake-251448581.jpg",
@@ -282,6 +558,174 @@
       "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/canned-drinks-330ml-251448582.jpg",
       "kind": "just-eat-experiment",
       "matchedBy": "exact"
+    },
+    "251448583": {
+      "path": "menu/drinks/rio-330ml-251448583.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/rio-330ml-251448583.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448584": {
+      "path": "menu/drinks/fruit-shoot-330ml-251448584.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fruit-shoot-330ml-251448584.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448585": {
+      "path": "menu/drinks/water-500ml-251448585.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/water-500ml-251448585.jpg",
+      "kind": "just-eat-experiment",
+      "matchedBy": "preserved"
+    },
+    "251448586": {
+      "path": "menu/drinks/fanta-fruit-twist-500ml-251448586.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-fruit-twist-500ml-251448586.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448587": {
+      "path": "menu/drinks/fanta-orange-1-5l-bottle-251448587.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-orange-1-5l-bottle-251448587.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448588": {
+      "path": "menu/drinks/pepsi-diet-330ml-251448588.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-diet-330ml-251448588.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448589": {
+      "path": "menu/drinks/pepsi-330ml-251448589.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-330ml-251448589.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448590": {
+      "path": "menu/drinks/pepsi-max-330ml-251448590.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-max-330ml-251448590.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448591": {
+      "path": "menu/drinks/pepsi-diet-500ml-251448591.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-diet-500ml-251448591.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448592": {
+      "path": "menu/drinks/pepsi-500ml-251448592.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-500ml-251448592.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448593": {
+      "path": "menu/drinks/coca-cola-original-taste-330ml-251448593.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-330ml-251448593.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448594": {
+      "path": "menu/drinks/7up-330ml-251448594.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/7up-330ml-251448594.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448595": {
+      "path": "menu/drinks/diet-coke-cola-330ml-can-251448595.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-330ml-can-251448595.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448596": {
+      "path": "menu/drinks/tango-zero-d-apple-sugar-free-330ml-251448596.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/tango-zero-d-apple-sugar-free-330ml-251448596.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448597": {
+      "path": "menu/drinks/dr-pepper-330ml-251448597.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/dr-pepper-330ml-251448597.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448598": {
+      "path": "menu/drinks/coca-cola-zero-sugar-330ml-251448598.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-zero-sugar-330ml-251448598.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448599": {
+      "path": "menu/drinks/coca-cola-cherry-330ml-251448599.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-cherry-330ml-251448599.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448600": {
+      "path": "menu/drinks/coca-cola-original-taste-500ml-bottle-251448600.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-500ml-bottle-251448600.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448601": {
+      "path": "menu/drinks/diet-coke-cola-500ml-bottle-251448601.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-500ml-bottle-251448601.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448602": {
+      "path": "menu/drinks/7up-500ml-251448602.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/7up-500ml-251448602.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448603": {
+      "path": "menu/drinks/dr-pepper-500ml-251448603.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/dr-pepper-500ml-251448603.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448604": {
+      "path": "menu/drinks/fanta-orange-500ml-bottle-251448604.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-orange-500ml-bottle-251448604.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448605": {
+      "path": "menu/drinks/coca-cola-original-taste-1-5l-251448605.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-1-5l-251448605.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448606": {
+      "path": "menu/drinks/diet-coke-cola-1-5l-bottle-251448606.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-1-5l-bottle-251448606.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448607": {
+      "path": "menu/drinks/sprite-lemon-lime-1-5l-bottle-251448607.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/sprite-lemon-lime-1-5l-bottle-251448607.jpg",
+      "kind": "just-eat-databank",
+      "matchedBy": "databank-name"
+    },
+    "251448608": {
+      "path": "menu/kids-meals/4-pcs-chicken-nugget-251448608.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/4-pcs-chicken-nugget-251448608.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448609": {
+      "path": "menu/kids-meals/7-pcs-chicken-popcorn-251448609.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/7-pcs-chicken-popcorn-251448609.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
+    },
+    "251448610": {
+      "path": "menu/kids-meals/2-pcs-chicken-strips-251448610.jpg",
+      "publicUrl": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/2-pcs-chicken-strips-251448610.jpg",
+      "kind": "just-eat-generic",
+      "matchedBy": "preserved"
     }
   },
   "categories": {
@@ -418,6 +862,80 @@
     "categories/dips.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/dips.jpg",
     "categories/desserts.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/desserts.jpg",
     "categories/drinks.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/categories/drinks.jpg",
-    "restaurant/logo.gif": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/restaurant/logo.gif"
+    "restaurant/logo.gif": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/restaurant/logo.gif",
+    "menu/pizza/peperoni-251448463.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/peperoni-251448463.jpg",
+    "menu/pizza/donner-251448473.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/donner-251448473.jpg",
+    "menu/pizza/hawaiian-251448481.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/hawaiian-251448481.jpg",
+    "menu/pizza/seafood-251448483.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/seafood-251448483.jpg",
+    "menu/pizza/veggie-251448485.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/pizza/veggie-251448485.jpg",
+    "menu/garlic-bread/10-garlic-bread-with-cheese-251448488.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/garlic-bread/10-garlic-bread-with-cheese-251448488.jpg",
+    "menu/kebabs/woodfarm-special-shish-kebab-251448501.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kebabs/woodfarm-special-shish-kebab-251448501.jpg",
+    "menu/family-meal/family-meal-1-251448502.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-meal-1-251448502.jpg",
+    "menu/family-meal/family-deal-2-251448503.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-deal-2-251448503.jpg",
+    "menu/family-meal/family-deal-3-251448504.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/family-deal-3-251448504.jpg",
+    "menu/family-meal/woodfarm-family-deal-4-people-251448505.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/family-meal/woodfarm-family-deal-4-people-251448505.jpg",
+    "menu/meal-deals/meal-deal-1-251448506.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-1-251448506.jpg",
+    "menu/meal-deals/meal-deal-2-251448507.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-2-251448507.jpg",
+    "menu/meal-deals/meal-deal-3-251448508.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-3-251448508.jpg",
+    "menu/meal-deals/meal-deal-4-251448509.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-4-251448509.jpg",
+    "menu/meal-deals/meal-deal-5-251448510.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-5-251448510.jpg",
+    "menu/meal-deals/meal-deal-6-251448511.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-6-251448511.jpg",
+    "menu/meal-deals/meal-deal-7-251448512.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-7-251448512.jpg",
+    "menu/meal-deals/meal-deal-8-251448513.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-8-251448513.jpg",
+    "menu/meal-deals/meal-deal-9-251448514.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-9-251448514.jpg",
+    "menu/meal-deals/meal-deal-10-251448515.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/meal-deals/meal-deal-10-251448515.jpg",
+    "menu/wraps/lamb-shish-wrap-251448520.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/lamb-shish-wrap-251448520.jpg",
+    "menu/wraps/kofta-wrap-251448521.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/kofta-wrap-251448521.jpg",
+    "menu/wraps/mixed-wrap-251448525.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/mixed-wrap-251448525.jpg",
+    "menu/burgers/cheeseburger-251448526.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/cheeseburger-251448526.jpg",
+    "menu/burgers/double-cheeseburger-251448528.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/double-cheeseburger-251448528.jpg",
+    "menu/burgers/chicken-burger-251448530.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/chicken-burger-251448530.jpg",
+    "menu/burgers/double-chicken-burger-251448532.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/double-chicken-burger-251448532.jpg",
+    "menu/burgers/egg-burger-251448536.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/egg-burger-251448536.jpg",
+    "menu/burgers/halloumi-burger-251448538.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/halloumi-burger-251448538.jpg",
+    "menu/burgers/woodfarm-special-burger-251448542.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/woodfarm-special-burger-251448542.jpg",
+    "menu/sides/popcorn-chicken-16pcs-251448547.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/sides/popcorn-chicken-16pcs-251448547.jpg",
+    "menu/fried-chicken-and-wings/1pc-fried-chicken-251448558.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/1pc-fried-chicken-251448558.jpg",
+    "menu/fried-chicken-and-wings/2pc-fried-chicken-251448559.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/2pc-fried-chicken-251448559.jpg",
+    "menu/fried-chicken-and-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448561.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448561.jpg",
+    "menu/fried-chicken-and-wings/10-pcs-spicy-wings-a-fiery-feast-251448562.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/10-pcs-spicy-wings-a-fiery-feast-251448562.jpg",
+    "menu/fried-chicken-and-wings/4-pcs-251448564.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/fried-chicken-and-wings/4-pcs-251448564.jpg",
+    "menu/spicy-chicken-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448566.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/6-pcs-spicy-wings-enough-to-share-or-enjoy-solo-251448566.jpg",
+    "menu/spicy-chicken-wings/10-pcs-spicy-wings-a-fiery-feast-251448567.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/10-pcs-spicy-wings-a-fiery-feast-251448567.jpg",
+    "menu/spicy-chicken-wings/4-pcs-251448569.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/spicy-chicken-wings/4-pcs-251448569.jpg",
+    "menu/chicken-strips/4-pcs-chicken-strips-perfect-for-a-light-meal-or-251448571.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/chicken-strips/4-pcs-chicken-strips-perfect-for-a-light-meal-or-251448571.jpg",
+    "menu/desserts/baklava-2pcs-251448578.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/baklava-2pcs-251448578.jpg",
+    "menu/desserts/pistachio-cake-251448580.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/desserts/pistachio-cake-251448580.jpg",
+    "menu/drinks/rio-330ml-251448583.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/rio-330ml-251448583.jpg",
+    "menu/drinks/fruit-shoot-330ml-251448584.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fruit-shoot-330ml-251448584.jpg",
+    "menu/drinks/water-500ml-251448585.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/water-500ml-251448585.jpg",
+    "menu/drinks/fanta-fruit-twist-500ml-251448586.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-fruit-twist-500ml-251448586.jpg",
+    "menu/drinks/fanta-orange-1-5l-bottle-251448587.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-orange-1-5l-bottle-251448587.jpg",
+    "menu/drinks/pepsi-diet-330ml-251448588.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-diet-330ml-251448588.jpg",
+    "menu/drinks/pepsi-330ml-251448589.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-330ml-251448589.jpg",
+    "menu/drinks/pepsi-max-330ml-251448590.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-max-330ml-251448590.jpg",
+    "menu/drinks/pepsi-diet-500ml-251448591.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-diet-500ml-251448591.jpg",
+    "menu/drinks/pepsi-500ml-251448592.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/pepsi-500ml-251448592.jpg",
+    "menu/drinks/coca-cola-original-taste-330ml-251448593.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-330ml-251448593.jpg",
+    "menu/drinks/7up-330ml-251448594.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/7up-330ml-251448594.jpg",
+    "menu/drinks/diet-coke-cola-330ml-can-251448595.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-330ml-can-251448595.jpg",
+    "menu/drinks/tango-zero-d-apple-sugar-free-330ml-251448596.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/tango-zero-d-apple-sugar-free-330ml-251448596.jpg",
+    "menu/drinks/dr-pepper-330ml-251448597.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/dr-pepper-330ml-251448597.jpg",
+    "menu/drinks/coca-cola-zero-sugar-330ml-251448598.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-zero-sugar-330ml-251448598.jpg",
+    "menu/drinks/coca-cola-cherry-330ml-251448599.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-cherry-330ml-251448599.jpg",
+    "menu/drinks/coca-cola-original-taste-500ml-bottle-251448600.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-500ml-bottle-251448600.jpg",
+    "menu/drinks/diet-coke-cola-500ml-bottle-251448601.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-500ml-bottle-251448601.jpg",
+    "menu/drinks/7up-500ml-251448602.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/7up-500ml-251448602.jpg",
+    "menu/drinks/dr-pepper-500ml-251448603.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/dr-pepper-500ml-251448603.jpg",
+    "menu/drinks/fanta-orange-500ml-bottle-251448604.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/fanta-orange-500ml-bottle-251448604.jpg",
+    "menu/drinks/coca-cola-original-taste-1-5l-251448605.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/coca-cola-original-taste-1-5l-251448605.jpg",
+    "menu/drinks/diet-coke-cola-1-5l-bottle-251448606.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/diet-coke-cola-1-5l-bottle-251448606.jpg",
+    "menu/drinks/sprite-lemon-lime-1-5l-bottle-251448607.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/drinks/sprite-lemon-lime-1-5l-bottle-251448607.jpg",
+    "menu/kids-meals/4-pcs-chicken-nugget-251448608.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/4-pcs-chicken-nugget-251448608.jpg",
+    "menu/kids-meals/7-pcs-chicken-popcorn-251448609.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/7-pcs-chicken-popcorn-251448609.jpg",
+    "menu/kids-meals/2-pcs-chicken-strips-251448610.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/kids-meals/2-pcs-chicken-strips-251448610.jpg",
+    "menu/wraps/veggie-wrap-251448522.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/veggie-wrap-251448522.jpg",
+    "menu/wraps/falafel-and-houmous-wrap-251448524.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/wraps/falafel-and-houmous-wrap-251448524.jpg",
+    "menu/burgers/veggie-burger-251448540.jpg": "https://idartbhlcbsefuhuvovs.supabase.co/storage/v1/object/public/menu-images/menu/burgers/veggie-burger-251448540.jpg"
   }
 }

@@ -136,9 +136,8 @@ export async function sendNtfyNotification({
       linesOut.push("Customer Notes: " + customerNotes);
     }
 
-    const text = linesOut.join("
-");
-    const baseUrl = server.replace(//+$/, "");
+    const text = linesOut.join("\n");
+    const baseUrl = server.replace(/\/$/, "");
     const url = baseUrl + "/" + encodeURIComponent(topic);
 
     const headers: Record<string, string> = {

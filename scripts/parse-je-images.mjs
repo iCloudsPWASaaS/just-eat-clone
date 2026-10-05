@@ -40,6 +40,15 @@ if (!existsSync(SRC)) {
 const html = readFileSync(SRC, "utf8");
 const menu = JSON.parse(readFileSync(join(ROOT, "data", "menu.json"), "utf8"));
 
+// Load existing images to preserve manually mapped ones
+let existingItems = {};
+let existingCategories = {};
+if (existsSync(OUT)) {
+  const existing = JSON.parse(readFileSync(OUT, "utf8"));
+  existingItems = existing.items || {};
+  existingCategories = existing.categories || {};
+}
+
 const blob = html.match(
   /<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/
 );
@@ -62,13 +71,16 @@ if (!restaurant) {
 function resolve(path) {
   const isRestaurantPhoto = /\/v1\/uk\/dishes\/267105\//.test(path);
   const isGeneric = /\/v1\/uk\/generic-products\//.test(path);
+  const isDatabank = /\/v1\/uk\/databank-products\//.test(path);
   return {
     url: path.replace("{transformations}", "c_thumb,w_600/f_jpg,q_auto"),
     kind: isRestaurantPhoto
       ? "restaurant-photo"
       : isGeneric
         ? "just-eat-generic"
-        : "just-eat-experiment",
+        : isDatabank
+          ? "just-eat-databank"
+          : "just-eat-experiment",
   };
 }
 
@@ -110,13 +122,18 @@ const looseCategories = new Map([...pageCategories].map(([n, v]) => [loose(n), v
 
 const items = {};
 const categories = {};
-const itemStats = { exact: 0, loose: 0, missing: 0 };
+const itemStats = { exact: 0, loose: 0, missing: 0, preserved: 0 };
 const itemsWithoutPhoto = [];
 const itemNamesMissing = [];
 
 for (const category of menu.categories) {
   const catImage = pageCategories.get(category.name) ?? looseCategories.get(loose(category.name)) ?? null;
-  if (catImage) categories[category.slug] = { name: category.name, ...catImage };
+  if (catImage) {
+    categories[category.slug] = { name: category.name, ...catImage };
+  } else if (existingCategories[category.slug]) {
+    // Preserve existing category image
+    categories[category.slug] = existingCategories[category.slug];
+  }
 
   for (const item of category.items) {
     let image = pageItems.get(item.name);
@@ -132,9 +149,19 @@ for (const category of menu.categories) {
     } else if (pageItems.has(item.name) || looseItems.has(loose(item.name))) {
       // On the page, but the restaurant uploaded no photo for it.
       itemsWithoutPhoto.push(`${category.name} / ${item.name}`);
+      // Try to preserve existing image if we have one
+      if (existingItems[item.sourceId]) {
+        itemStats.preserved++;
+        items[item.sourceId] = { ...existingItems[item.sourceId], matchedBy: "preserved" };
+      }
     } else {
       itemStats.missing++;
       itemNamesMissing.push(`${category.name} / ${item.name}`);
+      // Try to preserve existing image if we have one
+      if (existingItems[item.sourceId]) {
+        itemStats.preserved++;
+        items[item.sourceId] = { ...existingItems[item.sourceId], matchedBy: "preserved" };
+      }
     }
   }
 }
@@ -155,9 +182,10 @@ console.log(`product images on page: ${pageItems.size}`);
 console.log(`category images on page: ${pageCategories.size}\n`);
 
 console.log(`our menu items: ${total}`);
-console.log(`  matched:       ${itemStats.exact + itemStats.loose} (${itemStats.exact} exact, ${itemStats.loose} loose)`);
+console.log(`  matched from page:  ${itemStats.exact + itemStats.loose} (${itemStats.exact} exact, ${itemStats.loose} loose)`);
+console.log(`  preserved from existing: ${itemStats.preserved}`);
 console.log(`  by kind:       ${JSON.stringify(byKind)}`);
-console.log(`  no photo:      ${itemsWithoutPhoto.length}`);
+console.log(`  on page no photo:      ${itemsWithoutPhoto.length}`);
 console.log(`  not on page:   ${itemNamesMissing.length}`);
 
 console.log(`\nour categories: ${menu.categories.length}`);
