@@ -193,10 +193,17 @@ function mapModifierGroup(r: Row): ModifierGroup {
 function variationGroups(r: Row): ModifierGroup[] {
   const linked = r.modifier_group_variations;
   if (!Array.isArray(linked)) return [];
-  const groups = linked
-    .map((link: Row) => mapModifierGroup(link.modifier_groups))
-    .filter((g: ModifierGroup) => g.maxSelect > 0);
-  return groups.sort((a, b) => a.sortOrder - b.sortOrder);
+  return linked
+    .map((link: Row) => ({
+      ...mapModifierGroup(link.modifier_groups),
+      // The order a customer sees is per-variation, held on the link row. The
+      // group's own sort_order is its position in the restaurant-wide group
+      // list, which is a different sequence — using it put "Choose Rice or
+      // Chips" after the salad and sauce on Donner Kebab.
+      sortOrder: num(link.sort_order),
+    }))
+    .filter((g: ModifierGroup) => g.maxSelect > 0)
+    .sort((a, b) => a.sortOrder - b.sortOrder);
 }
 
 function mapVariation(r: Row): MenuVariation {

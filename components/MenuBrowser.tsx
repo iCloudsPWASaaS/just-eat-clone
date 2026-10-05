@@ -477,6 +477,7 @@ export function VariationPicker({
               group={group}
               picked={picked}
               onBump={bumpOption}
+              otherPicked={(id) => picked.get(id) ?? 0}
             />
           ))}
 
@@ -611,12 +612,20 @@ function ModifierPicker({
   group,
   picked,
   onBump,
+  otherPicked,
 }: {
   group: ModifierGroup;
   picked: Map<string, number>;
   onBump: (group: ModifierGroup, option: ModifierOption, delta: number) => void;
+  otherPicked: (optionId: string) => number;
 }) {
   const single = group.maxSelect <= 1;
+  /**
+   * An optional one-of-N group ("Choose Rice or Chips"). Radio buttons cannot be
+   * unticked once set, so these render as checkboxes that still allow only one
+   * choice at a time.
+   */
+  const toggleable = single && group.minSelect === 0 && group.options.length > 1;
   const [expanded, setExpanded] = useState(false);
   const VISIBLE = 4;
 
@@ -655,15 +664,24 @@ function ModifierPicker({
           const active = qty > 0;
           const atCap = !single && chosen >= group.maxSelect && !active;
 
-          const row = (
+const row = (
             <>
               <input
-                type={single ? "radio" : "checkbox"}
+                type={single && !toggleable ? "radio" : "checkbox"}
                 name={`modifier-${group.id}`}
                 className="h-4 w-4 accent-[#f36d00]"
                 checked={active}
                 disabled={atCap}
-                onChange={() => onBump(group, o, active ? -qty : 1)}
+                onChange={() => {
+                  if (toggleable) {
+                    // Clear the rest of the group first, so ticking one box
+                    // unticks whichever was set.
+                    for (const other of group.options) onBump(group, other, -otherPicked(other.id));
+                    if (!active) onBump(group, o, 1);
+                    return;
+                  }
+                  onBump(group, o, active ? -qty : 1);
+                }}
               />
               <span className="flex-1 text-sm font-semibold text-grey-darkest">
                 {o.name}
