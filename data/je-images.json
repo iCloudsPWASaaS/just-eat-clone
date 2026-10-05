@@ -644,34 +644,6 @@
       "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Desserts_Cakes_Strawberry_Fudge_Cake_processed",
       "kind": "just-eat-experiment"
     },
-    "251448582": {
-      "name": "Canned Drinks 330ml",
-      "category": "Drinks",
-      "matchedBy": "exact",
-      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
-      "kind": "just-eat-experiment"
-    },
-    "251448583": {
-      "name": "Rio 330ml",
-      "category": "Drinks",
-      "matchedBy": "preserved",
-      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
-      "kind": "just-eat-experiment"
-    },
-    "251448584": {
-      "name": "Fruit Shoot 330ml",
-      "category": "Drinks",
-      "matchedBy": "preserved",
-      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
-      "kind": "just-eat-experiment"
-    },
-    "251448585": {
-      "name": "Water 500ml",
-      "category": "Drinks",
-      "matchedBy": "preserved",
-      "url": "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_thumb,w_600/f_jpg,q_auto/v1/Experiments/groceries/uk/Project%20Flashmob/Generic/UK_Beer_Beer_Can_processed_1",
-      "kind": "just-eat-experiment"
-    },
     "251448586": {
       "name": "Fanta Fruit Twist 500ml",
       "category": "Drinks",

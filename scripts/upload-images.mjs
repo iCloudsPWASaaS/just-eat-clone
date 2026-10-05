@@ -9,6 +9,7 @@
  * in data/images.json are skipped unless --force is passed.
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createClient } from "@supabase/supabase-js";
@@ -52,6 +53,15 @@ if (!existsSync(jePath)) {
 }
 const je = JSON.parse(readFileSync(jePath, "utf8"));
 
+// Drop manifest entries for items that no longer have a source image, so the
+// importer writes a null image_url instead of a stale public URL.
+for (const sourceId of Object.keys(manifest.items)) {
+  if (!je.items[sourceId]) {
+    delete manifest.items[sourceId];
+    console.log(`pruned ${sourceId} from manifest`);
+  }
+}
+
 const slug = (s) =>
   s
     .toLowerCase()
@@ -86,16 +96,30 @@ async function download(url) {
   }
 }
 
-async function store(path, sourceUrl) {
-  if (!force && manifest.objects[path]) return manifest.objects[path];
+/**
+ * Uploads and returns `{ publicUrl, sha }`.
+ *
+ * The object path carries a short hash of the bytes, so replacing an image
+ * produces a new URL. Without this the path stays the same when the contents
+ * change and every browser keeps serving its cached copy of the old file.
+ */
+async function store(pathBase, sourceUrl, ext = "jpg") {
   const payload = await download(sourceUrl);
+  const sha = createHash("sha256").update(payload.buffer).digest("hex").slice(0, 8);
+  const path = `${pathBase}-${sha}.${ext}`;
+
+  if (!force && manifest.objects[path]) {
+    return { publicUrl: manifest.objects[path], sha };
+  }
+
   const { error } = await supabase.storage
     .from(BUCKET)
     .upload(path, payload.buffer, { contentType: payload.contentType, upsert: true });
   if (error) throw new Error(error.message);
+
   const publicUrl = supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
   manifest.objects[path] = publicUrl;
-  return publicUrl;
+  return { publicUrl, sha };
 }
 
 function save() {
@@ -112,11 +136,11 @@ async function run() {
   const itemEntries = Object.entries(je.items);
   console.log(`\nuploading ${itemEntries.length} product images`);
   for (const [sourceId, meta] of itemEntries) {
-    const path = `menu/${slug(meta.category)}/${slug(meta.name)}-${sourceId}.jpg`;
+    const base = `menu/${slug(meta.category)}/${slug(meta.name)}-${sourceId}`;
     try {
-      const publicUrl = await store(path, meta.url);
+      const { publicUrl } = await store(base, meta.url);
       manifest.items[sourceId] = {
-        path,
+        path: base,
         publicUrl,
         kind: meta.kind,
         matchedBy: meta.matchedBy,
@@ -132,10 +156,10 @@ async function run() {
   const catEntries = Object.entries(je.categories);
   console.log(`uploading ${catEntries.length} category images`);
   for (const [catSlug, meta] of catEntries) {
-    const path = `categories/${slug(catSlug)}.jpg`;
+    const base = `categories/${slug(catSlug)}`;
     try {
-      const publicUrl = await store(path, meta.url);
-      manifest.categories[catSlug] = { path, publicUrl, kind: meta.kind };
+      const { publicUrl } = await store(base, meta.url);
+      manifest.categories[catSlug] = { path: base, publicUrl, kind: meta.kind };
     } catch (err) {
       failed++;
       console.warn(`  ! category ${meta.name}: ${err.message}`);
@@ -153,8 +177,8 @@ async function run() {
   const logo = restaurantSeed.restaurants[0].logoUrl;
   if (logo) {
     try {
-      const publicUrl = await store("restaurant/logo.gif", logo);
-      manifest.restaurant.logo = { path: "restaurant/logo.gif", publicUrl };
+      const { publicUrl } = await store("restaurant/logo", logo, "gif");
+      manifest.restaurant.logo = { path: "restaurant/logo", publicUrl };
       console.log(`  ✓ ${publicUrl}`);
     } catch (err) {
       failed++;
