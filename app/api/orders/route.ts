@@ -7,6 +7,7 @@ import {
   type RequestedLine,
 } from "@/lib/orders";
 import type { DeliveryAddressSnapshot, FulfilmentType } from "@/lib/types";
+import { sendNtfyNotification } from "@/lib/notify";
 
 export const dynamic = "force-dynamic";
 
@@ -187,6 +188,56 @@ const rawLines = Array.isArray(body.lines)
   });
 
   await supabase.from("basket_items").delete().eq("user_id", userId);
+
+  // Send ntfy notification (non-blocking)
+  void (async () => {
+    try {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("email, first_name, last_name, phone")
+        .eq("id", userId)
+        .single();
+
+      await sendNtfyNotification({
+        reference,
+        fulfilment,
+        totals,
+        lines: priced.lines.map((l) => ({
+          name: l.name,
+          variationName: l.variationName,
+          quantity: l.quantity,
+          unitPrice: l.unitPrice,
+          lineTotal: l.lineTotal,
+          modifiers: l.modifiers.map((m) => ({ name: m.optionId, quantity: m.quantity })),
+          notes: l.notes,
+        })),
+          address: address
+            ? {
+                firstName: address.firstName,
+                lastName: address.lastName,
+                addressLine1: address.addressLine1,
+                addressLine2: address.addressLine2 ?? null,
+                city: address.city,
+                postcode: address.postcode,
+                phone: address.phone ?? null,
+                deliveryNotes: address.deliveryNotes ?? null,
+              }
+            : null,
+          customerNotes:
+            typeof body.customerNotes === "string" ? body.customerNotes.trim().slice(0, 500) : null,
+          user: profile
+            ? {
+                email: profile.email ?? null,
+                firstName: profile.first_name ?? null,
+                lastName: profile.last_name ?? null,
+                phone: profile.phone ?? null,
+              }
+            : { email: null, firstName: null, lastName: null, phone: null },
+        });
+    } catch (e) {
+      console.error("[orders] ntfy notify setup failed:", e);
+    }
+  })();
 
   // Hand the client back the authoritative post-order basket so it can reset
   // its local state without a second round trip.
