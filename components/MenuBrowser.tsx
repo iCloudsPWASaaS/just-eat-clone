@@ -12,6 +12,7 @@ import {
   IconStarOutline,
 } from "@/components/Icons";
 import { money } from "@/lib/money";
+import { rankByResemblance, type CatalogEntry } from "@/lib/recommend";
 import type {
   MenuCategory,
   MenuItem,
@@ -54,7 +55,13 @@ function pickNoun(groups: ModifierGroup[]): string | null {
   return `Choose ${names.slice(0, -1).map((n) => n.toLowerCase()).join(", ")} & ${names[names.length - 1].toLowerCase()}`;
 }
 
-export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: MenuItem[] }) {
+export function MenuItemCard({
+  item,
+  catalog = [],
+}: {
+  item: MenuItem;
+  catalog?: CatalogEntry[];
+}) {
   const { add, setQuantity, linesForItem, isFavourite, toggleFavourite, user } = useBasket();
   const [pickerFor, setPickerFor] = useState<MenuItem | null>(null);
   const [favBusy, setFavBusy] = useState(false);
@@ -222,7 +229,7 @@ export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: 
       {pickerFor?.id === item.id && (
         <VariationPicker
           item={pickerFor}
-          suggested={suggested}
+          catalog={catalog}
           onClose={() => setPickerFor(null)}
         />
       )}
@@ -232,11 +239,11 @@ export function MenuItemCard({ item, suggested }: { item: MenuItem; suggested?: 
 
 export function VariationPicker({
   item,
-  suggested = [],
+  catalog = [],
   onClose,
 }: {
   item: MenuItem;
-  suggested?: MenuItem[];
+  catalog?: CatalogEntry[];
   onClose: () => void;
 }) {
   const { add } = useBasket();
@@ -253,10 +260,10 @@ export function VariationPicker({
    */
   const [picked, setPicked] = useState<Map<string, number>>(new Map());
 
-  /** Suggested dishes, minus the one being composed. */
+  /** Dishes that most resemble this one, minus the one being composed. */
   const others = useMemo(
-    () => suggested.filter((s) => s.id !== item.id),
-    [suggested, item.id]
+    () => rankByResemblance(item, catalog).slice(0, 8),
+    [catalog, item]
   );
 
   /**
@@ -518,7 +525,7 @@ export function VariationPicker({
                 ref={carouselRef}
                 className="je-no-scrollbar -mx-5 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1"
               >
-                {others.slice(0, 8).map((s) => {
+                {others.map((s) => {
                   const multi = s.variations.length > 1;
                   const n = countOf(s.id);
                   return (
@@ -856,17 +863,10 @@ function CategoryNav({ categories }: { categories: MenuCategory[] }) {
 export function MenuBrowser({ categories }: { categories: MenuCategory[] }) {
   const [query, setQuery] = useState("");
 
-  /** Popular dishes across the whole menu, deduped, for the picker's "Have you seen…?" */
-  const popular = useMemo(
+  /** Every dish with its category, so popups can rank "Have you seen…?" by resemblance. */
+  const catalog = useMemo(
     () =>
-      Array.from(
-        new Map(
-          categories
-            .flatMap((c) => c.items)
-            .filter((i) => i.isPopular)
-            .map((i) => [i.id, i])
-        ).values()
-      ),
+      categories.flatMap((c) => c.items.map((item) => ({ item, categoryName: c.name }))),
     [categories]
   );
 
@@ -915,7 +915,7 @@ export function MenuBrowser({ categories }: { categories: MenuCategory[] }) {
               <h2 className="mb-3 text-xl font-extrabold text-grey-darkest">{c.name}</h2>
               <ul className="space-y-3">
                 {c.items.map((i) => (
-                  <MenuItemCard key={i.id} item={i} suggested={popular} />
+                  <MenuItemCard key={i.id} item={i} catalog={catalog} />
                 ))}
               </ul>
             </section>
